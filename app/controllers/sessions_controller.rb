@@ -9,4 +9,11 @@ class SessionsController < ApplicationController
     end
   end
   
+  def destroy
+    @user = User.find_by_token(session[:token])
+    @user.token = nil
+    session[:token] = nil 
+    redirect_to login_path
+  end
+  
 end
