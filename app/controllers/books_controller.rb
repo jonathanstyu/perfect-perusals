@@ -5,7 +5,7 @@ class BooksController < ApplicationController
   end
   
   def show
-    @book = Book.includes(:authors).find(params[:id])
+    @book = Book.includes(:authors, :reviews).find(params[:id])
     render :show
   end
   
