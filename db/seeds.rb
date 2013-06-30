@@ -1,5 +1,7 @@
 User.create(email: "jon@", password: "pass")
 User.create(email: "jenny@", password: "pass")
+
+# Authors 
 User.create(name: "hasuna isakura")
 User.create(name: "murakami")
 User.create(name: "jay rubin")
@@ -18,3 +20,5 @@ Authorship.create(book_id: 2, author_id: 5)
 Authorship.create(book_id: 4, author_id: 7)
 Authorship.create(book_id: 3, author_id: 6)
 Authorship.create(book_id: 3, author_id: 3)
+
+Review.create(title: "Crazy!", body: "There was so much going on that I loved it.", stars: 4, reviewer_id: 2, book_id: 4)

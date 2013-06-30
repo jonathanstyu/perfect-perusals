@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
     :through => :authorships, 
     :source => :book
   
+  has_many :reviews, 
+    :foreign_key => :reviewer_id,
+    :inverse_of => :reviewer
+  
   def password=(password)
     self.password_hash = Digest::SHA2.base64digest(password)
   end

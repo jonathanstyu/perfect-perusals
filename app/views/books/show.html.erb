@@ -1,0 +1,27 @@
+<div class="span10">
+	<div class="span3">
+		<img src="<%= @book.cover_image %>">
+	</div>
+	<div class="span6">
+		<h3><%= @book.title.capitalize %></h3>
+		<p>
+			By: <% @book.authors.each_with_index do |author, index| %>
+				<a href="<%= user_path(author) %>">
+					<%= author.name %>
+				</a>
+				
+				<% unless index == @book.authors.size - 1 %>
+				<%= ', '%>
+				<%end%>
+				
+			<%end%>
+		</p>
+			Synopsis: <%= @book.synopsis %>
+		</p>
+	</div>	
+</div>
+
+<hr />
+<div class="span10" id="reviews">
+	<h4>Reviews</h4>
+</div><!-- .span10 -->
