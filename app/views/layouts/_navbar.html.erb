@@ -5,6 +5,7 @@
 			<li class=><a href="#">Home</a></li>
 			<li><a href="#">My Books</a></li>
 			<li><a href="#">Recommendations</a></li>
+			<li><a href="<%= books_path %>">Explore</a></li>
 			<li class='divider-vertical'></li>
 			<form class='navbar-search'>
 				<input class='search-query' placeholder='Find Books' type='text'>
@@ -16,7 +17,7 @@
 				<% if @current_user %>
 					<a href="<%= user_path(@current_user) %>"><%= @current_user.email %></a>
 				<%else%>
-					<a href="<%= login_url %>">Log In</a>
+					<a href="<%= login_path %>">Log In</a>
 				<%end%>
 			</li>
 		</ul>		
