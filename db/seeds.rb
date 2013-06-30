@@ -1,5 +1,6 @@
-User.create(email: "jon@", password: "pass")
-User.create(email: "jenny@", password: "pass")
+User.create(email: "jon@", password: "pass", name: "jon")
+User.create(email: "jenny@", password: "pass", name: "jenn")
+User.create(email: "adam", password: "pass", name: "adam")
 
 # Authors 
 User.create(name: "hasuna isakura")

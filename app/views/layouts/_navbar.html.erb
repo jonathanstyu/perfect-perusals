@@ -1,8 +1,8 @@
 <div class="navbar navbar-static-top">
 	<div class="navbar-inner">
-		<a href="#" class='brand'>PerfectPerusals</a>
+		<a href="<%= root_path %>" class='brand'>PerfectPerusals</a>
 		<ul class='nav'>
-			<li class=><a href="#">Home</a></li>
+			<li class=><a href="<%= root_path %>">Home</a></li>
 			<li><a href="#">My Books</a></li>
 			<li><a href="#">Recommendations</a></li>
 			<li><a href="<%= books_path %>">Explore</a></li>
@@ -13,13 +13,13 @@
 		</ul>
 		
 		<ul class='nav pull-right'>
-			<li>
-				<% if @current_user %>
-					<a href="<%= user_path(@current_user) %>"><%= @current_user.email %></a>
-				<%else%>
-					<a href="<%= login_path %>">Log In</a>
-				<%end%>
-			</li>
+			<% if user.nil? %>
+				<a href="<%= login_path %>">Log In</a>					
+			<%else%>
+				<li><a href="<%= users_path(user) %>"><%= user.name.capitalize %>'s Account</a></li>
+				<li><%= link_to "Log Out", session_path, method: :delete %></li>
+			<%end%>
+			
 		</ul>		
 	</div><!-- .navbar-inner -->
 </div>

@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<%= render partial: "layouts/navbar" %>
+	<%= render partial: "layouts/navbar", :locals => {user: @current_user} %>
 
 	<div class="container">
 		<%= render partial: "layouts/flash", :locals => {flash: flash} %>
