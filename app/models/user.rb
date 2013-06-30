@@ -1,5 +1,11 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password
+  attr_accessible :email, :password, :name 
+  
+  has_many :authorships, 
+    :foreign_key => :author_id
+  has_many :authored_books, 
+    :through => :authorships, 
+    :source => :book
   
   def password=(password)
     self.password_hash = Digest::SHA2.base64digest(password)
