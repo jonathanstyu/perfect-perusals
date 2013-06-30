@@ -2,9 +2,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :name 
   
   before_save :fill_name
-  
-  validates :email, :presence => true
-  
+    
   has_many :authorships, 
     :foreign_key => :author_id
   has_many :authored_books, 
@@ -33,7 +31,7 @@ class User < ActiveRecord::Base
   private
   
   def fill_name
-    if name.nil?
+    if email && name.nil?
       name = email
     end
   end

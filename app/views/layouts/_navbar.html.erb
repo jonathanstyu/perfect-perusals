@@ -14,7 +14,9 @@
 		
 		<ul class='nav pull-right'>
 			<% if user.nil? %>
-				<a href="<%= login_path %>">Log In</a>					
+				<li>
+					<a href="<%= login_path %>">Log In</a>
+				</li>
 			<%else%>
 				<li><a href="<%= user_path(user) %>"><%= user.name.capitalize %>'s Account</a></li>
 				<li><%= link_to "Log Out", session_path, method: :delete %></li>

@@ -12,7 +12,9 @@
 	<div class="container">
 		<%= render partial: "layouts/flash", :locals => {flash: flash} %>
 		<hr />
-		<%= yield %>
+		<div class="row">
+			<%= yield %>
+		</div><!-- .row -->		
 	</div>
 
 
