@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'backbone-on-rails'
 gem 'better_errors'
 gem 'binding_of_caller'
+gem 'ejs'
 
 
 # Gems used only for assets and not required

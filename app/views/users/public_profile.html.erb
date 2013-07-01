@@ -1,11 +1,6 @@
-<h3><%= @user.name.capitalize %></h3>
+<h3><%= @user.name.capitalize %>'s Profile</h3>
 
-<p>
-	Biography: 
-</p>
+<%= button_to "Friend" %>
 
-<div class="name">
-	<h4><%= @user.name %>'s Books</h4>
-	<hr />
-	<%= render @user.authored_books %>	
-</div><!-- .name -->
+<h4>Books <%= @user.name %> likes</h4>
+<%= render @user.tagged_books %>

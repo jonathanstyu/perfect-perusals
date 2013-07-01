@@ -9,7 +9,11 @@ class UsersController < ApplicationController
       render 'root/dashboard'
     else
       @user = User.includes(:authored_books).find(params[:id])
-      render :public_profile
+      if @user.authored_books.empty?
+        render :public_profile
+      else
+        render :author_profile
+      end
     end
   end
   
