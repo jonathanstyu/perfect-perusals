@@ -16,7 +16,9 @@ Readingapp.Views.CommentsForm = Backbone.View.extend({
 	
 	addComment: function (event) {
 		event.preventDefault(); 
-		console.log($(event.target.form).find('textarea').val())
+		var model = new Readingapp.Models.Comment($(event.target.form).serializeJSON()); 
+		this.collection.create(model); 		
+		Backbone.history.navigate("", {trigger: true}); 
 	}
 
 });
