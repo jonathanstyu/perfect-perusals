@@ -12,6 +12,12 @@ class User < ActiveRecord::Base
   has_many :reviews, 
     :foreign_key => :reviewer_id,
     :inverse_of => :reviewer
+    
+  has_many :taggings, 
+    foreign_key: :user_id
+  has_many :tagged_books, 
+    :through => :taggings, 
+    source: :book
   
   def password=(password)
     self.password_hash = Digest::SHA2.base64digest(password)

@@ -11,4 +11,8 @@ class Book < ActiveRecord::Base
     :foreign_key => :book_id,
     :inverse_of => :book
   
+  has_many :taggings
+  has_many :tagged_books, 
+    through: :taggings
+  
 end
