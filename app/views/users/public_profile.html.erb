@@ -1,0 +1,11 @@
+<h3>Author: <%= @user.name.capitalize %></h3>
+
+<p>
+	Biography: 
+</p>
+
+<div class="name">
+	<h4><%= @user.name %>'s Books</h4>
+	<hr />
+	<%= render @user.authored_books %>	
+</div><!-- .name -->

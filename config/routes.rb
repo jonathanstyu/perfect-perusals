@@ -6,5 +6,6 @@ Readingapp::Application.routes.draw do
   resource :session, :only => [:create, :destroy]
   resources :users
   resources :books
+  resources :reviews
   
 end
