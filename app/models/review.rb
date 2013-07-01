@@ -6,6 +6,8 @@ class Review < ActiveRecord::Base
   
   belongs_to :book
   
+  has_many :comments
+  
   validates :stars, :presence => true, :inclusion => {in: 1..5 }
   validates :book, :presence => true
   

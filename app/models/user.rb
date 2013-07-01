@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   has_many :reviews, 
     :foreign_key => :reviewer_id,
     :inverse_of => :reviewer
+  has_many :comments, 
+    foreign_key: :commenter_id
     
   has_many :taggings, 
     foreign_key: :user_id

@@ -5,10 +5,6 @@ window.Readingapp = {
   Routers: {},
 	Store: {},
   initialize: function() {
-    
   }
 };
 
-$(document).ready(function(){
-  Readingapp.initialize();
-});
