@@ -1,12 +1,10 @@
-<h3>Your Reviews</h3>
+<h3>Your Bookshelf</h3>
 
-<%= render @reviews %>
-
-<h4>Total Books</h4>
-<%= render @current_user.tagged_books%>
-<h4>Books To Read</h4>
-<%= render @current_user.tagged_books.where("taggings.name = 'Want To Read'")%>
-<h4>Books Read</h4>
-<%= render @current_user.tagged_books.where("taggings.name = 'Read'")%>
-<h4>Books Currently Reading</h4>
-<%= render @current_user.tagged_books.where("taggings.name = 'Currently Reading'")%>
+<div class="row">
+	<div class="sidebar span3">
+	
+	</div><!-- .sidebar -->
+	<div class="content span9">
+		
+	</div><!-- .content span9 -->	
+</div><!-- .row -->

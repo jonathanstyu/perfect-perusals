@@ -2,7 +2,11 @@ class ReviewsController < ApplicationController
 
   def index
     @reviews = @current_user.reviews
-    render :index
+    respond_to do |format|
+      format.html {render :index}
+      format.json {render json: @reviews}
+    end
+    
   end
   
 end
