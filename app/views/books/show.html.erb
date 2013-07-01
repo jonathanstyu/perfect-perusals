@@ -22,8 +22,20 @@
 </div>
 
 
-<div class="span10" id="reviews">
+<div class="span10" id="review_form">
 	<hr />
+	<h4>Your Review</h4>
+	<% review = @book.reviews.where(reviewer_id: @current_user.id) %>
+	<% if review.empty? %>
+	<h5>Review this book!</h5>
+	<%= render partial: "reviews/review_form", 
+		locals: {book: @book, 
+			method: "post", 
+			path: book_reviews_path(@book)}%>
+	<%end%>
+</div><!-- .span10 -->
+
+<div class="span10" id='reviews'>
 	<h4>Reviews</h4>
 	<hr />
 	<%= render @book.reviews %>

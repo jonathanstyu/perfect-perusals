@@ -1,0 +1,34 @@
+<form id="review" action="<%= path %>" method="POST", data-remote="true">
+	<input type="hidden" 
+		name="authenticity_token" 
+		value="<%= form_authenticity_token %>" 
+		id="authenticity_token">
+		
+	<input type="hidden" 
+		name="_method" value="<%= method %>" id="_method">
+	
+	<label for="Title">Title</label>
+	<input type="text" name="review[title]" value="" id="Title">
+	<label for="body">Body</label>
+	<textarea name="review[body]" rows="2" cols="20" id='body'></textarea>
+	
+	<label for='review[stars]'>Stars</label>
+	<select name="review[stars]" id="review[stars]">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+	</select>
+	<br>
+	<input type="submit" name="some_name" value="submit review" id="some_name" class='btn btn-small btn-primary'>	
+	
+</form>
+
+<script type="text/javascript" charset="utf-8">
+	$(function () {
+		$('#review').on("ajax:success", function (e, data, status) {
+			console.log(data); 
+		}); 
+	}); 
+</script>

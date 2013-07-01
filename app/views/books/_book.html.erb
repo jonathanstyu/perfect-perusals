@@ -3,7 +3,11 @@
 		<img src='<%= book.cover_image %>' class='media-object' style='height:64px'>
 	</a>
 	<div class="media-body">
-		<h5 class='media-heading'><%= book.title %></h5>
+		<h5 class='media-heading'>
+			<a href="<%= book_path(book)%>">
+				<%= book.title %>
+			</a>
+		</h5>
 		<% if @current_user.tagged_book_ids.include?(book.id) %>
 		<%= button_to "Read", :class => "btn"%>
 		<%else%>

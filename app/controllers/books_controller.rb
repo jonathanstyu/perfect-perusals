@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_filter :require_login, except: :show
   
   def index
     @books = Book.all

@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   
   def create
     @user = User.find_by_email(params[:email])
-    if @user.verify_password(params[:password])
+    if @user && @user.verify_password(params[:password])
       session[:token] = @user.generate_token!
       flash[:success] = "You are signed in"
       redirect_to root_path

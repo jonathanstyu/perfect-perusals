@@ -1,7 +1,10 @@
-<b><%= review.title %></b>
+<b><%= review.reviewer.name %> wrote: <%= review.title %></b>
 <p>
 	Stars: <%= review.stars %>	
 </p>
 <p>
 	<%= review.body %>
+</p>
+<p>
+	<a href="<%= review_path(review) %>">Comment</a>
 </p>

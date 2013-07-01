@@ -5,7 +5,9 @@ Readingapp::Application.routes.draw do
   match 'signup', :to => 'users#new'
   resource :session, :only => [:create, :destroy]
   resources :users
-  resources :books
-  resources :reviews
+  resources :books do 
+    resources :reviews, :only => [:create, :index]
+  end
+  resources :reviews, :only => [:delete, :update, :index, :show]
   
 end
