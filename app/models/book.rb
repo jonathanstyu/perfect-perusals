@@ -1,5 +1,5 @@
 class Book < ActiveRecord::Base
-  attr_accessible :title, :synopsis, :cover_image
+  attr_accessible :title, :synopsis, :cover_image, :isbn
   
   has_many :authorships, 
     :foreign_key => :book_id
@@ -14,7 +14,14 @@ class Book < ActiveRecord::Base
   has_many :taggings
   has_many :tagged_books, 
     through: :taggings
-    
+
+  validates :isbn, 
+    :uniqueness => true 
+
+  searchable do 
+    text :title, :isbn
+  end
+
   def avg_rating
     return 0.0 if self.reviews.empty?
     star_sum = self.reviews.collect {|review| review.stars }.sum

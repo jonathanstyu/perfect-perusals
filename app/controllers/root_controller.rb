@@ -17,4 +17,14 @@ class RootController < ApplicationController
     render :my_books
   end
   
+  def search
+    @search = Book.search do 
+      fulltext params[:title]
+    end
+    
+    @results = @search.results
+    
+    redirect_to 'root#search_results'
+  end
+  
 end

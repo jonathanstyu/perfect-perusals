@@ -8,10 +8,5 @@
 				<%= book.title %>
 			</a>
 		</h5>
-		<% if @current_user.tagged_book_ids.include?(book.id) %>
-		<%= button_to "Read", :class => "btn"%>
-		<%else%>
-		<%= button_to "Want to Read"%>
-		<%end%>		
 	</div><!-- .media-body -->
 </div><!-- .media -->

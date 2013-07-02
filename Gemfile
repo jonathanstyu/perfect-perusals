@@ -10,6 +10,8 @@ gem 'better_errors'
 gem 'binding_of_caller'
 gem 'ejs'
 gem 'pg'
+gem 'sunspot_rails'
+gem 'sunspot_solr'
 
 
 # Gems used only for assets and not required

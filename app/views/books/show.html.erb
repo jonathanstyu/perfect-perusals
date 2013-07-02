@@ -18,7 +18,16 @@
 		</p>
 			Synopsis: <%= @book.synopsis %>
 		</p>
-	</div>	
+		
+		<div id="tagging-module" class='well well-small'>
+			<% tags = @current_user.taggings.where(book_id: @book.id)%>
+			<% if tags.empty? %>
+			<span class="label label-inverse">Add This Book</span>
+			<%else%>
+			Shelves: <span class="label label-inverse"><%= tags.first.name %></span>
+			<%end%>		
+		</div>					
+	</div>		
 </div>
 
 
