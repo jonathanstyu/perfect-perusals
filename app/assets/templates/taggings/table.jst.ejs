@@ -16,9 +16,13 @@
 			<td><a href="/books/<%= tagging.escape('book_id') %>"><%= tagging.get('book').title%></a></td>
 			<td><%= tagging.get('book').author_names.join(", ") %></td>
 			<td><%= tagging.get('book').avg_rating.toFixed(2) %></td>
-			<td></td>
-			<td><%= tagging.get('updated_at') %></td>
-			<td><%= tagging.get('created_at') %></td>
+			<td id="myrating" data-id='<%= tagging.escape("book_id") %>'>
+				<a href="/books/<%= tagging.escape('book_id') %>">
+					Rate
+				</a>
+			</td>
+			<td><%= tagging.escape('updated_at') %></td>
+			<td><%= tagging.escape('created_at') %></td>
 			<td id="shelf"><%= tagging.escape('name') %></td>
 		</tr>		
 	<% }); %>

@@ -4,11 +4,10 @@ Readingapp.Views.TaggingsTable = Backbone.View.extend({
 	
 	render: function () {
 
-		var myReviews = JSON.parse($('#bootstrapped_reviews').html()); 
-		console.log(myReviews); 
 		var content = this.template({
 			taggings: this.collection
 		}); 
+		
 
 		this.$el.html(content); 
 		return this 
