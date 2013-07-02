@@ -1,0 +1,28 @@
+<h2>Search Results</h2>
+<hr />
+<% if @results.empty? %>
+<h3>There are no search results found. Sorry, bro.</h3>
+<%else%>
+
+	<table border="0" cellspacing="5" cellpadding="5" class='table'>
+		<tr>
+			<th>Image</th>
+			<th>Title</th>
+			<th>Authors</th>
+			<th>Avg Rating</th>
+		</tr>
+		
+	<% @results.each do |result| %>
+		<tr>
+			<td><img src='<%= result.cover_image %>' style='height: 64px'></td>
+			<td>
+				<a href="<%= book_path(result) %>"><%= result.title %></a>
+			</td>
+			<td><%= result.author_names.join(", ") %></td>
+			<td><%= result.avg_rating %></td>
+		</tr>
+	<%end%>
+	</table>
+
+
+<%end%>

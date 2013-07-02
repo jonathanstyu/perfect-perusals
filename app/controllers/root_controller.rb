@@ -24,7 +24,7 @@ class RootController < ApplicationController
     
     @results = @search.results
     
-    redirect_to 'root#search_results'
+    render :search_results
   end
   
 end
