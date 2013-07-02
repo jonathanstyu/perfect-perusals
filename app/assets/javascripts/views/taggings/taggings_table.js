@@ -3,7 +3,9 @@ Readingapp.Views.TaggingsTable = Backbone.View.extend({
   template: JST['taggings/table'], 
 	
 	render: function () {
-		// console.log(this.collection.models[0].get("book").cover_image); 
+
+		var myReviews = JSON.parse($('#bootstrapped_reviews').html()); 
+		console.log(myReviews); 
 		var content = this.template({
 			taggings: this.collection
 		}); 
