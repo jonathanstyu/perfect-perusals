@@ -20,12 +20,6 @@
 		</p>
 		
 		<div id="tagging-module" class='well well-small'>
-			<% tags = @current_user.taggings.where(book_id: @book.id)%>
-			<% if tags.empty? %>
-			<span class="label label-inverse">Add This Book</span>
-			<%else%>
-			Shelves: <span class="label label-inverse"><%= tags.first.name %></span>
-			<%end%>		
 		</div>					
 	</div>		
 </div>
@@ -75,6 +69,19 @@
 				review: data
 			});
 			$("div#reviews").append(rendered_content); 
+		});
+		
+		Readingapp.initialize(); 
+		var taggings = new Readingapp.Collections.Taggings(); 
+		taggings.fetch({
+			success: function (data) {
+				new Readingapp.Routers.TaggingsModule({
+					rootelement: $("#tagging-module"), 
+					collection: taggings
+				}); 
+				Backbone.history.start(); 
+			}
 		}); 
+		 
 	}); 
 </script>
