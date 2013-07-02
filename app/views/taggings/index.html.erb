@@ -1,0 +1,28 @@
+<h3>Your Book Shelves</h3>
+<hr />
+<div class="row">
+	<div class="sidebar span3">
+	</div><!-- .sidebar -->
+	<div class="content span9">
+		
+	</div><!-- .content span9 -->	
+</div><!-- .row -->
+
+<script type="text/javascript" charset="utf-8">
+	Readingapp.initialize(); 
+	Readingapp.Store.taggings = new Readingapp.Collections.Taggings(); 
+	Readingapp.Store.taggings.fetch({
+		success: function () {
+			new Readingapp.Routers.Taggings({
+				sidebar: $("div.sidebar"),
+				content: $("div.content")
+			}); 
+			Backbone.history.start(); 
+		}
+	})
+	
+</script>
+
+<script type="text/template" id="bootstrapped_reviews">
+	<%= @current_user.reviews.to_json.html_safe %>
+</script>

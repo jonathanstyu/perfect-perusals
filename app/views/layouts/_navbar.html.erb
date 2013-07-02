@@ -3,7 +3,8 @@
 		<a href="<%= root_path %>" class='brand'>PerfectPerusals</a>
 		<ul class='nav'>
 			<li class=><a href="<%= root_path %>">Home</a></li>
-			<li><a href="<%= reviews_path %>">My Books</a></li>
+			<li><a href="<%= taggings_path %>">My Books</a></li>
+			<li><a href="<%= reviews_path %>">My Reviews</a></li>
 			<li><a href="#">Recommendations</a></li>
 			<li><a href="<%= books_path %>">Explore</a></li>
 			<li class='divider-vertical'></li>
@@ -19,7 +20,7 @@
 				</li>
 			<%else%>
 				<li><a href="<%= edit_user_path(user) %>"><%= user.name.capitalize %>'s Account</a></li>
-				<li><%= link_to "Log Out", session_path, method: :delete %></li>
+				<li><%= link_to "Log Out", sessions_path, method: :delete %></li>
 			<%end%>
 			
 		</ul>		
