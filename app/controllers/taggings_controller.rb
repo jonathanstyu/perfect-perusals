@@ -4,7 +4,7 @@ class TaggingsController < ApplicationController
   def index
     @tagging = @current_user.taggings
     respond_to do |format|
-      format.html {render :index}
+      # format.html {render :index}
       format.json {render json: @tagging}
     end
   end

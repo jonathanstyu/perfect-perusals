@@ -40,7 +40,12 @@ Tagging.create(name: "Want To Read", book_id: 2, user_id: 1)
 Tagging.create(name: "Want To Read", book_id: 4, user_id: 1)
 Tagging.create(name: "Want To Read", book_id: 1, user_id: 1)
 Tagging.create(name: "Read", book_id: 3, user_id: 1)
-Tagging.create(name: "Currently Reading", book_id: 8, user_id: 1)
+Tagging.create(name: "Currently Reading", book_id: 7, user_id: 1)
+Tagging.create(name: "Want To Read", book_id: 1, user_id: 3)
+Tagging.create(name: "Read", book_id: 3, user_id: 3)
+Tagging.create(name: "Currently Reading", book_id: 7, user_id: 3)
+
+
 
 Comment.create(text: "Well what else do you have to say?", review_id: 2, commenter_id: 1)
 Comment.create(text: "What do you mean?", review_id: 2, commenter_id: 2)
