@@ -22,7 +22,16 @@ Readingapp.Routers.Taggings = Backbone.Router.extend({
 	}, 
 	
 	shelfView: function (id) {
-		console.log(id); 
+		var sidebar_content = JST['taggings/index'](); 
+		this.$sidebar.html(sidebar_content); 
+		
+		var shelf = Readingapp.Store.taggings.where({name: id});
+		var table_content = new Readingapp.Views.TaggingsTable({
+			collection: shelf
+		}); 
+		
+		this.$content.html(table_content.render().$el)
+		
 	}
 	
 });

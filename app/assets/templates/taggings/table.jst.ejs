@@ -10,7 +10,7 @@
 		<th>Shelf</th>
 	</tr>
 	
-	<% taggings.each(function (tagging) { %>
+	<% taggings.forEach(function (tagging) { %>
 		<tr>
 			<td><img src="<%= tagging.get('book').cover_image %>" style='width: 60px'></td>
 			<td><a href="/books/<%= tagging.escape('book_id') %>"><%= tagging.get('book').title%></a></td>
