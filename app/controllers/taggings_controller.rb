@@ -7,7 +7,6 @@ class TaggingsController < ApplicationController
       format.html {render :index}
       format.json {render json: @tagging}
     end
-    
   end
   
 end

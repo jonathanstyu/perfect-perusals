@@ -6,7 +6,8 @@ Readingapp.Routers.Taggings = Backbone.Router.extend({
 	},
 	
 	routes: {
-		"": "index"
+		"": "index", 
+		"shelf/:id": "shelfView"
 	}, 
 	
 	index : function () {
@@ -18,6 +19,10 @@ Readingapp.Routers.Taggings = Backbone.Router.extend({
 		}); 
 		
 		this.$content.html(table_content.render().$el)
+	}, 
+	
+	shelfView: function (id) {
+		console.log(id); 
 	}
 	
 });

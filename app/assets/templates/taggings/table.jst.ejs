@@ -7,17 +7,19 @@
 		<th>Your Rating</th>
 		<th>Date Read</th>
 		<th>Date Added</th>
+		<th>Shelf</th>
 	</tr>
 	
 	<% taggings.each(function (tagging) { %>
 		<tr>
-			<td><img src="<%= tagging.get('book').cover_image%>" style='width: 60px'></td>
-			<td><%= tagging.get('book').title%></td>
+			<td><img src="<%= tagging.get('book') %>" style='width: 60px'></td>
+			<td><a href="/books/<%= tagging.escape('book_id') %>"><%= tagging.get('book').title%></a></td>
 			<td><%= tagging.get('book').author_names%></td>
-			<td><%= tagging.get('book').avg_rating %></td>
+			<td><%= tagging.get('book').avg_rating.toFixed(2) %></td>
 			<td></td>
 			<td><%= tagging.get('updated_at') %></td>
 			<td><%= tagging.get('created_at') %></td>
+			<td><%= tagging.escape('name') %></td>
 		</tr>		
 	<% }); %>
 </table>

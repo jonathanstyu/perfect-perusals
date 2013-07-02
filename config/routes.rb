@@ -3,6 +3,7 @@ Readingapp::Application.routes.draw do
   root :to => 'root#home'
   match 'login', :to => 'sessions#login'
   match 'signup', :to => 'users#new'
+  match 'mybooks', :to => 'root#my_books'
   resource :sessions, :only => [:create, :destroy]
   resources :users
   resources :books do 

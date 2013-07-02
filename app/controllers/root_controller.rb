@@ -12,4 +12,8 @@ class RootController < ApplicationController
     end
   end
   
+  def my_books
+    render :my_books
+  end
+  
 end
