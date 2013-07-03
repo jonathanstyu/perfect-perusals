@@ -27,7 +27,7 @@ Readingapp.Views.TaggingsForm = Backbone.View.extend({
 		}); 
 
 		this.$el.html(content); 
-		return this 
+		return this; 
 	}, 
 	
 	openEdit : function () {
@@ -51,9 +51,7 @@ Readingapp.Views.TaggingsForm = Backbone.View.extend({
 		var options = {
 			success: function (model, response) {
 				newTag = new Readingapp.Models.Tagging(response); 			
-				console.log(that.collection);
 				that.collection.add(newTag); 
-				console.log(that.collection);
 			}
 		}; 
 		

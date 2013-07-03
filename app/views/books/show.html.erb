@@ -20,11 +20,11 @@
 		</p>
 		
 		<% if @current_user %>
-		<div id="tagging-module" class='well well-small span7' data-id='<%= @book.id %>'>
+		<div class='well well-small span7 tagging-module' data-id='<%= @book.id %>'>
 			
 		</div>
 		<%else%>
-		<div id="tagging-module" class='well well-small span7' data-id='<%= @book.id %>'>
+		<div class='well well-small span7 tagging-module' data-id='<%= @book.id %>'>
 			<a href="<%= login_path %>">Log in Please</a>
 		</div>		
 		<%end%>
@@ -81,9 +81,9 @@
 		Readingapp.initialize(); 
 		var taggings = new Readingapp.Collections.Taggings(); 
 		taggings.fetch({
-			success: function (data) {
+			success: function () {
 				new Readingapp.Routers.TaggingsModule({
-					rootelement: $("#tagging-module"), 
+					rootelement: $(".tagging-module"), 
 					collection: taggings
 				}); 
 				Backbone.history.start(); 
