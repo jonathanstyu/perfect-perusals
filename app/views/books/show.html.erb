@@ -19,8 +19,15 @@
 			Synopsis: <%= @book.synopsis %>
 		</p>
 		
-		<div id="tagging-module" class='well well-small' data-id='<%= @book.id %>'>
-		</div>					
+		<% if @current_user %>
+		<div id="tagging-module" class='well well-small span7' data-id='<%= @book.id %>'>
+			
+		</div>
+		<%else%>
+		<div id="tagging-module" class='well well-small span7' data-id='<%= @book.id %>'>
+			<a href="<%= login_path %>">Log in Please</a>
+		</div>		
+		<%end%>
 	</div>		
 </div>
 

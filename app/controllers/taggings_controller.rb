@@ -4,8 +4,16 @@ class TaggingsController < ApplicationController
   def index
     @tagging = @current_user.taggings
     respond_to do |format|
-      # format.html {render :index}
       format.json {render json: @tagging}
+    end
+  end
+  
+  def create
+    @tagging = @current_user.taggings.build(params[:tagging])
+    if @tagging.save!
+      render json: @tagging
+    else
+      render json: @tagging.errors, status: 400
     end
   end
   

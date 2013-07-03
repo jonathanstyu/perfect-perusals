@@ -1,8 +1,8 @@
-Label: <span class="label label-info">
+
 	<% if (tag) { %>
-		<%= tag.escape('name') %>
+		<span class="label label-info btn" id='edit'><%= tag.escape('name') %></span>
 	<%} else { %>
-		Want to Read?
+		<span class="label label-info btn" id='create'>Want to Read?</span>
 	<% } %>
-</span>
+
 
