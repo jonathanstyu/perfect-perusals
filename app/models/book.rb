@@ -37,4 +37,12 @@ class Book < ActiveRecord::Base
     self.authors.map {|author| author.name.capitalize }
   end
   
+  def cover
+    if self.cover_image.length == 0 && self.cover_photo
+      self.cover_photo.url
+    else
+      self.cover_image
+    end
+  end
+  
 end

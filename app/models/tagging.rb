@@ -11,8 +11,8 @@ class Tagging < ActiveRecord::Base
     result = super({
       except: :user_id, 
       include: {book: {
-        only: [:title, :cover_image], 
-        methods: [:avg_rating, :author_names]
+        only: [:title], 
+        methods: [:avg_rating, :author_names, :cover]
       }}
     }.merge(options))
 
@@ -21,5 +21,5 @@ class Tagging < ActiveRecord::Base
 
     result 
   end
-  
+    
 end
