@@ -1,11 +1,8 @@
 class RootController < ApplicationController
   before_filter :require_login, :only => [:my_books]
-  
-  def dashboard
-    render :dashboard
-  end
-  
+    
   def home
+    @books = Book.all
     if @current_user
       render :dashboard
     else

@@ -1,1 +1,11 @@
 <h3><%= @current_user.name %>'s Books</h3>
+<hr />
+<div class="row-fluid">
+	<div class="span8">
+		<h4>Explore the Latest Books</h4>
+		<%= render @books %>
+	</div><!-- .span8 -->
+	<div class="span4">
+		content goes here
+	</div><!-- .span4 -->
+</div><!-- .row-fluid -->

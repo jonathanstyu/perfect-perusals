@@ -7,7 +7,7 @@ Readingapp::Application.routes.draw do
   match 'search', :to => 'root#search'
   resource :sessions, :only => [:create, :destroy]
   resources :users
-  resources :books do 
+  resources :books, except: [:index] do 
     resources :reviews, :only => [:create, :index]
   end
   resources :reviews, :only => [:delete, :update, :index, :show] do 
