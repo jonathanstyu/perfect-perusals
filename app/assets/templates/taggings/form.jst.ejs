@@ -1,5 +1,10 @@
-<select name="name" id="tag-form" size="1">
-	<option value="read">Read</option>
-	<option value="currently-reading">Currently Reading</option>
-	<option value="to-read">To Read</option>
-</select>
+<form>
+	<% ['read', 'currently-reading', 'to-read'].forEach(function (name) {  %>
+		<% if (tag.name == 'name') { %>
+			<input type='radio' value="<%= name %>" name='name' selected><%= name %></option>
+		<%} else { %>
+			<input type='radio' value="<%= name %>" name='name'><%= name %></option>
+		<% } %>
+	<% }); %><br>
+	<input type="submit" name="submit" value="submit" id="submit">
+</form>

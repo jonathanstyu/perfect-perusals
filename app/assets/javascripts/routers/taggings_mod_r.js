@@ -10,7 +10,8 @@ Readingapp.Routers.TaggingsModule = Backbone.Router.extend({
 	
 	index: function () {
 		var module = new Readingapp.Views.TaggingsForm({
-			collection: this.collection
+			collection: this.collection, 
+			book: this.$rootelement.attr('data-id')
 		}); 
 		
 		this.$rootelement.html(module.render().$el); 
