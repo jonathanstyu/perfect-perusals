@@ -1,5 +1,5 @@
 class Book < ActiveRecord::Base
-  attr_accessible :title, :synopsis, :cover_image, :isbn
+  attr_accessible :title, :synopsis, :cover_image, :isbn, :cover_photo
   
   has_many :authorships, 
     :foreign_key => :book_id
@@ -21,6 +21,8 @@ class Book < ActiveRecord::Base
   searchable do 
     text :title, :isbn
   end
+  
+  has_attached_file :cover_photo
 
   def avg_rating
     return 0.0 if self.reviews.empty?

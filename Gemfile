@@ -13,6 +13,8 @@ gem 'pg'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'figaro'
+gem 'paperclip'
+gem 'aws-sdk'
 
 
 # Gems used only for assets and not required

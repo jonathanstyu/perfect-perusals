@@ -34,4 +34,14 @@ Readingapp::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  config.paperclip_defaults = {
+    :storage => :s3, 
+    :s3_credentials => {
+      :bucket => 'reading-app-book-covers', 
+      :access_key_id => Figaro.env.AWS_ACCESS_KEY, 
+      :secret_access_key => Figaro.env.SECRET_ACCESS_KEY
+    }, 
+    :s3_hostname => "s3-website-us-west-1.amazonaws.com"
+  }
 end

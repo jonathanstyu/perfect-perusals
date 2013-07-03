@@ -1,0 +1,12 @@
+<h2>Add Your Book to the Database</h2>
+
+<%= form_for @book do |form| %>
+
+<label for="Title">Title</label><input type="text" name="book[title]" value="" id="Title">
+<label for="ISBN Number">ISBN Number</label><input type="text" name="book[isbn]" value="" id="ISBN Number">
+<label for 'synopsis'>Synopsis</label>
+<textarea name="book[synopsis]" rows="8" cols="40" id='synopsis'></textarea>
+<%= form.file_field :cover_photo %>
+
+<input type="submit" name="submit" value="Create Book" id="submit">
+<%end%>

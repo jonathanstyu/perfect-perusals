@@ -6,4 +6,9 @@ class BooksController < ApplicationController
     render :show
   end
   
+  def new
+    @book = Book.new 
+    render :new
+  end
+  
 end
