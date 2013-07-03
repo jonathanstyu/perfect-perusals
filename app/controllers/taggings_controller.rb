@@ -11,7 +11,7 @@ class TaggingsController < ApplicationController
   def create
     @tagging = @current_user.taggings.build(params[:tagging])
     if @tagging.save!
-      render json: @tagging
+      render json: @tagging, status: 200
     else
       render json: @tagging.errors, status: 400
     end

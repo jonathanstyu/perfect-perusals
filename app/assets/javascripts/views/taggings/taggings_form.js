@@ -1,9 +1,14 @@
 Readingapp.Views.TaggingsForm = Backbone.View.extend({
 	
 	initialize: function (options) {
-		this.collection = options.collection; 
-		this.bookId = options.book; 
-		this.listenTo(this.collection, "add", this.render)
+		var that = this; 
+		
+		that.collection = options.collection; 
+		that.bookId = options.book; 
+		
+		['add', 'destroy', 'change:name'].forEach(function (event) {
+			that.listenTo(that.collection, event, that.render); 
+		}); 
 	},
 
   formtemplate: JST['taggings/form'], 
@@ -36,17 +41,23 @@ Readingapp.Views.TaggingsForm = Backbone.View.extend({
 	}, 
 	
 	create: function () {
+		var that = this; 
+		
 		var newTag = new Readingapp.Models.Tagging({
 			book_id: +this.bookId, 
 			name: "to-read"
 		}); 
 		
-		newTag.save({
-			success: function (data) {
-				newTag = new Readingapp.Models.Tagging(data); 
-				this.collection.add(newTag); 
+		var options = {
+			success: function (model, response) {
+				newTag = new Readingapp.Models.Tagging(response); 			
+				console.log(that.collection);
+				that.collection.add(newTag); 
+				console.log(that.collection);
 			}
-		}); 
+		}; 
+		
+		newTag.save({}, options); 
 	}, 
 	
 	editTag: function (event) {
