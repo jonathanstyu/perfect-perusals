@@ -1,5 +1,5 @@
 class RootController < ApplicationController
-  before_filter :require_login
+  before_filter :require_login, :only => [:my_books]
   
   def dashboard
     render :dashboard
