@@ -12,6 +12,7 @@ gem 'ejs'
 gem 'pg'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
+gem 'figaro'
 
 
 # Gems used only for assets and not required

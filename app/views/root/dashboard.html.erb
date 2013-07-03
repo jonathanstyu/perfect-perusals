@@ -1,4 +1,4 @@
-<h3><%= @current_user.name %>'s Books</h3>
+<h3><%= @current_user.name.capitalize %>'s Books</h3>
 <hr />
 <div class="row-fluid">
 	<div class="span8">
@@ -6,6 +6,6 @@
 		<%= render @books %>
 	</div><!-- .span8 -->
 	<div class="span4">
-		content goes here
+		<h4>DashBoard</h4>
 	</div><!-- .span4 -->
 </div><!-- .row-fluid -->
