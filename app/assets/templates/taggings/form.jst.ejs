@@ -1,7 +1,8 @@
 <form>
-	<% ['read', 'currently-reading', 'to-read'].forEach(function (name) {  %>
-		<% if (tag.name == 'name') { %>
-			<input type='radio' value="<%= name %>" name='name' selected><%= name %></option>
+	<% ['read', 'currently-reading', 'to-read', 'delete'].forEach(function (name) {  %>
+		<% if (tag.escape('name') == name) { %>
+			
+			<input type='radio' value="<%= name %>" name='name' checked><%= name %></option>
 		<%} else { %>
 			<input type='radio' value="<%= name %>" name='name'><%= name %></option>
 		<% } %>

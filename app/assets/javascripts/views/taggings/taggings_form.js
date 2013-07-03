@@ -11,7 +11,8 @@ Readingapp.Views.TaggingsForm = Backbone.View.extend({
 	
 	events: {
 		"click span#edit": 'openEdit', 
-		"click span#create": 'create'
+		"click span#create": 'create', 
+		'click input[type="submit"]': 'editTag'
 	},
 	
 	render: function () {
@@ -44,9 +45,22 @@ Readingapp.Views.TaggingsForm = Backbone.View.extend({
 			success: function (data) {
 				newTag = new Readingapp.Models.Tagging(data); 
 				this.collection.add(newTag); 
-				console.log(this.collection); 
 			}
 		}); 
+	}, 
+	
+	editTag: function (event) {
+		event.preventDefault(); 
+		
+		var taggingData = $(event.target.form).serializeJSON(); 
+		var bookTag = this.collection.findWhere({book_id: +this.bookId}); 
+		
+		if (taggingData.name == "delete") {
+			bookTag.destroy(); 
+		} else {
+			bookTag.set('name', taggingData); 
+			bookTag.save(); 			
+		}
 	}
 
 });

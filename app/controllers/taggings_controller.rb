@@ -17,4 +17,22 @@ class TaggingsController < ApplicationController
     end
   end
   
+  def update
+    @tagging = @current_user.taggings.find(params[:id])
+    if @tagging && @tagging.update_attributes!(params[:name])
+      render json: @tagging
+    else
+      render json: @tagging.errors, status: 400
+    end
+  end
+  
+  def destroy
+    @tagging = @current_user.taggings.find(params[:id])
+    if @tagging && @tagging.destroy()
+      render json: @tagging, status: 200
+    else
+      render json: @tagging.errors, status: 400
+    end
+  end
+  
 end
