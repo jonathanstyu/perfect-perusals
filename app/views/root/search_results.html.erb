@@ -14,7 +14,10 @@
 		
 	<% @results.each do |result| %>
 		<tr>
-			<td><img src='<%= result.cover_image %>' style='height: 64px'></td>
+			<td><img src='<%= result.cover_image.length == 0 ? 
+					result.cover_photo.url : 
+					result.cover_image %>' 
+				style='height: 64px'></td>
 			<td>
 				<a href="<%= book_path(result) %>"><%= result.title %></a>
 			</td>

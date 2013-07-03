@@ -32,26 +32,31 @@
 </div>
 
 
-<div class="span10" id="review_form">
+<div class="span10 row-fluid" id="review_form">
 	<hr />		
-	<% if @current_user.nil? %>
-	<%= link_to "Login or Signup to Review", login_path %>
-	<%else%>
-	<% review = @book.reviews.where(reviewer_id: @current_user.id) %>
-	<%end%>
-	<% if review && review.empty? %>
-	<h5>Review this book!</h5>
-	<%= render partial: "reviews/review_form", 
-		locals: {book: @book, 
-			method: "post", 
-			path: book_reviews_path(@book)}%>
-	<%end%>
-</div><!-- .span10 -->
-<hr />
-<div class="span10" id='reviews'>
-	<h4>Reviews</h4>
-	<hr />
-	<%= render @book.reviews %>
+	<div class="span4">
+		<% if @current_user.nil? %>
+		<%= link_to "Login or Signup to Review", login_path %>
+		<%else%>
+		<% review = @book.reviews.where(reviewer_id: @current_user.id) %>
+		<%end%>
+		<% if review && review.empty? %>
+		<h5>Review this book!</h5>
+		<%= render partial: "reviews/review_form", 
+			locals: {book: @book, 
+				method: "post", 
+				path: book_reviews_path(@book)}%>
+		<%end%>
+	</div>
+	
+	<div class="span6">
+		<h4>Reviews</h4>
+		<hr />
+		<%= render @book.reviews %>		
+		<div id='reviews'>
+		</div><!-- .span10 -->
+	</div>
+	
 </div><!-- .span10 -->
 
 <script type="text/template" id='submitted_comment'>

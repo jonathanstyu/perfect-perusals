@@ -6,6 +6,41 @@
 		<%= render @books %>
 	</div><!-- .span8 -->
 	<div class="span4">
-		<h4>DashBoard</h4>
+		<h5>Your Stats Dashboard</h5>
+		<hr />
+		<div class="row-fluid">
+			<div class="span6 well well-small">
+				<h4 style='text-align:center'>Total Books Read:</h4><br>
+				<div id='total-read'></div>
+			</div>
+			<div class="span6 well well-small" id='to-read'>
+				<h4 style='text-align:center'>Books To Read:</h4><br>
+				<div id='to-read'></div>
+			</div>
+		</div>
+		<hr />
+		<h5>Currently Reading</h5>
+		<div id='currently-reading'>
+			
+		</div>
+		<hr />
 	</div><!-- .span4 -->
 </div><!-- .row-fluid -->
+
+<script type="text/javascript" charset="utf-8">
+$(function () {
+	Readingapp.initialize(); 
+	var taggings = new Readingapp.Collections.Taggings(); 
+	taggings.fetch({
+		success: function () {
+			new Readingapp.Routers.TaggingsStats({
+				collection: taggings, 
+				
+				
+			}); 
+			Backbone.history.start(); 
+		}
+	}); 
+	
+}); 
+</script>

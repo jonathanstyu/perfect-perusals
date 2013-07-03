@@ -8,7 +8,6 @@ Readingapp.Views.TaggingsTable = Backbone.View.extend({
 			taggings: this.collection
 		}); 
 		
-
 		this.$el.html(content); 
 		return this 
 	}

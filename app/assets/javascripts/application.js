@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
+//= require bootstrap.min
 //= require jquery.serializeJSON.min
 //= require readingapp
 //= require_tree ../templates
