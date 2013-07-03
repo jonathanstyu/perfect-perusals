@@ -1,5 +1,5 @@
 class Book < ActiveRecord::Base
-  attr_accessible :title, :synopsis, :cover_image, :isbn, :cover_photo
+  attr_accessible :title, :synopsis, :cover_image, :isbn, :cover_photo, :authors_attributes
   
   has_many :authorships, 
     :foreign_key => :book_id
@@ -22,7 +22,10 @@ class Book < ActiveRecord::Base
     text :title, :isbn
   end
   
-  has_attached_file :cover_photo
+  has_attached_file :cover_photo, 
+    s3_host_name: "s3-us-west-1.amazonaws.com"
+
+  accepts_nested_attributes_for :authors
 
   def avg_rating
     return 0.0 if self.reviews.empty?

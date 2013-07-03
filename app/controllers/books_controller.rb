@@ -11,4 +11,13 @@ class BooksController < ApplicationController
     render :new
   end
   
+  def create
+    @book = Book.new(params[:book])
+    if @book.save 
+      render json: @book
+    else
+      render json: @book.errors
+    end
+  end
+  
 end

@@ -1,11 +1,13 @@
 <form>
 	<% ['read', 'currently-reading', 'to-read', 'delete'].forEach(function (name) {  %>
+		<label class='checkbox inline'>
 		<% if (tag.escape('name') == name) { %>
 			
-			<input type='radio' value="<%= name %>" name='name' checked><%= name %></option>
+			<input type='radio' value="<%= name %>" name='name' checked> <%= name %>
 		<%} else { %>
-			<input type='radio' value="<%= name %>" name='name'><%= name %></option>
+			<input type='radio' value="<%= name %>" name='name'> <%= name %>
 		<% } %>
+		</label>
 	<% }); %><br>
-	<input type="submit" name="submit" value="submit" id="submitTag">
+	<input type="submit" class='btn btn-small btn-inverse' value="submit" id="submitTag">
 </form>

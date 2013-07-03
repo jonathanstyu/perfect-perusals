@@ -1,6 +1,6 @@
 <div class="media">
 	<a href="#" class='pull-left'>
-		<img src='<%= book.cover_image %>' class='media-object' style='height:64px'>
+		<img src='<%= book.cover_image.length == 0 ? book.cover_photo.url : book.cover_image %>' class='media-object' style='height:64px'>
 	</a>
 	<div class="media-body">
 		<h5 class='media-heading'>
