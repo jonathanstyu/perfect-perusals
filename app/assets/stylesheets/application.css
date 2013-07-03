@@ -12,3 +12,7 @@
  *= require bootstrap.min.css
  *= require_tree .
  */
+
+#currently-reading table {
+	font-size: small;
+}

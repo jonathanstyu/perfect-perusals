@@ -20,9 +20,7 @@
 		</div>
 		<hr />
 		<h5>Currently Reading</h5>
-		<div id='currently-reading'>
-			
-		</div>
+		<div id='currently-reading'></div>
 		<hr />
 	</div><!-- .span4 -->
 </div><!-- .row-fluid -->
@@ -35,7 +33,7 @@ $(function () {
 		success: function () {
 			new Readingapp.Routers.TaggingsStats({
 				collection: taggings, 
-				
+				currentlyReading: $('#currently-reading')
 				
 			}); 
 			Backbone.history.start(); 
