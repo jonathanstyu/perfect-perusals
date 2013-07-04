@@ -1,9 +1,21 @@
 <% if current_user %>
 	<% if user == current_user %>
-	<a href="#" class='btn btn-small btn-success'>You're Already Your Own Best Friend!</a>
+		<a href="#" 
+			class='btn btn-small btn-success'>
+		You're Already Your Own Best Friend!
+		</a>
+	<%elsif(current_user.friends.include?(user)) %>
+	<%= button_to "Unfriend", 
+		user_unfriend_path(user), 
+		method: 'delete',
+		:class => 'btn btn-small btn-danger' %>	
 	<%else%>
-	<%= button_to "Friend", user_friend_path(user), :class => 'btn btn-small btn-success' %>
+		<%= button_to "Friend", 
+			user_friend_path(user), 
+			:class => 'btn btn-small btn-success' %>
 	<%end%>
 <%else%>
-	<%= link_to "Log In To Friend", login_path, :class => 'btn btn-small btn-primary' %>
+	<%= link_to "Log In To Friend", 
+		login_path, 
+		:class => 'btn btn-small btn-primary' %>
 <%end%>
