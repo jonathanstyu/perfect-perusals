@@ -40,7 +40,11 @@
 	<% @people_results.each do |result| %>
 		<tr>
 			<td><%= result.email %></td>
-			<td><%= result.name %></td>
+			<td>
+				<a href="<%= user_path(result) %>">
+					<%= result.name %>
+				</a>
+			</td>
 			<td><%= result.email.nil? ? "YES" : "NO" %></td>
 		</tr>
 	<%end%>

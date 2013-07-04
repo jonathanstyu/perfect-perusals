@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    if params[:id] == @current_user.id
+    if @current_user && params[:id] == @current_user.id
       respond_to do |format|
         format.html {render 'root/dashboard'}
         format.json {render json: @current_user.events}
