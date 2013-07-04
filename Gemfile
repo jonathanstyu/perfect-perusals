@@ -15,6 +15,8 @@ gem 'sunspot_solr'
 gem 'figaro'
 gem 'paperclip'
 gem 'aws-sdk'
+gem 'rabl'
+gem 'oj'
 
 
 # Gems used only for assets and not required

@@ -71,12 +71,25 @@ class User < ActiveRecord::Base
     Follow.create(follower_id: self.id, followee_id: user.id)
   end
   
-  def events
-    @events = []
-    @events.merge(self.reviews.to_json)
-    @events.merge()
+  def as_json(options={})
+    result = super({
+      only: [:name, :biography]
+    }.merge(options))
+    
+    result
   end
   
+  def events
+    @events = []
+    event_names = ['friendships', 'taggings', 'reviews', 'comments']
+    event_names.each do |event|
+      @events += self.send(event)
+    end
+    @events.sort_by {|event| event.updated_at }
+    
+    @events
+  end
+    
   private
   
   def fill_name

@@ -36,13 +36,22 @@ class Book < ActiveRecord::Base
   def author_names
     self.authors.map {|author| author.name.capitalize }
   end
-  
+    
   def cover
     if self.cover_image.length == 0 && self.cover_photo
       self.cover_photo.url
     else
       self.cover_image
     end
+  end
+  
+  def as_json(options={})
+    result = super({
+      only: [:title], 
+      methods: [:cover]
+    }.merge(options))
+    
+    result 
   end
   
 end

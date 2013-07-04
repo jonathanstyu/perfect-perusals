@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_filter :require_login, except: [:new, :show]
-  
-  
+    
   def new
     render :signup
   end
@@ -30,7 +29,6 @@ class UsersController < ApplicationController
       .friendships
       .where(friendee_id: @person_to_friend.id).first
       
-    # render json: @friendship
     redirect_to :back
   end
   
@@ -41,6 +39,18 @@ class UsersController < ApplicationController
     
     @friendship.destroy()
     redirect_to :back
+  end
+  
+  def feed
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+      @events = @user.events
+    else
+      @events = @current_user.events
+      # Put the friend feed here. 
+    end
+    
+    render 'rabl_templates/feed', formats: :json
   end
 
 end
