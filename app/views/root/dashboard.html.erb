@@ -54,7 +54,7 @@ $(function () {
 	
 	// Execute anon function when both fetches for taggings, feed are successful 
 	$.when(taggings.fetch(), feed.fetch()).then(function () {
-		runStatsDashboard(); 
+		// runStatsDashboard(); 
 		runFriendFeed(); 
 		Backbone.history.start(); 
 	})	 

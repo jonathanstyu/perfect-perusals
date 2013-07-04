@@ -1,1 +1,76 @@
-<h3>Hello!</h3>
+<% feeds.each(function (feed) { %>
+	<% if (feed.escape('type') == 'Friendship') { %>
+		<% var friendship = feed.get('friendship')%>
+		<div class="media">
+			<a href="#">
+				<img>	
+			</a>
+			<div class="media-body">
+				<h4 class='media-heading'>
+					<%= friendship.friender.name %> friended <%= friendship.friendee.name%>
+				</h4>
+				<p>
+					What do you think of that?
+				</p>
+			</div><!-- .media-body -->
+		</div><!-- .media -->	
+		<hr />
+	<%}%>
+
+	<% if (feed.escape('type') == 'Comment') { %>
+		<% var comment = feed.get('comment') %>
+		<div class="media">
+			<a href="" class='pull-left'>
+				<img src='<%= comment.review.book.cover %>' style='height:75px' class='media-object'>	
+			</a>
+			<div class="media-body">
+				<h4 class='media-heading'>
+					<%= comment.commenter.name %> commented on <%= comment.review.reviewer.name%>'s review of <%= comment.review.book.title%>
+				</h4>
+				<p><i>
+					"<%= comment.text%>"
+				</i></p>
+			</div><!-- .media-body -->
+		</div><!-- .media -->	
+		<hr />
+	<%}%>
+
+	<% if (feed.escape('type') == 'Tagging') { %>
+		<% var tag = feed.get('tagging') %>
+		<div class="media">
+			<a href="" class='pull-left'>
+				<img src='<%= tag.book.cover %>' style='height:75px' class='media-object'>	
+			</a>
+			<div class="media-body">
+				<h4 class='media-heading'>
+					<%= tag.tagger.name %> moved the book '<%= tag.book.title %>' to the bookshelf: "<%= tag.name%>"
+				</h4>
+				<p><i>
+					Do you want to read this book too?
+				</i></p>
+			</div><!-- .media-body -->
+		</div><!-- .media -->	
+
+		<hr />
+	<%}%>
+
+	<% if (feed.escape('type') == 'Review') { %>
+		<% var review = feed.get('review')%>
+		<div class="media">
+			<a href="" class='pull-left'>
+				<img src='<%= review.book.cover %>' style='height:75px' class='media-object'>	
+			</a>
+			<div class="media-body">
+				<h4 class='media-heading'>
+					<%= review.reviewer.name %> gave the book '<%= review.book.title %>' <%= review.stars %> stars and said about it: 
+				</h4>
+				<p><i>
+					"<%= review.body %>"
+				</i></p>
+			</div><!-- .media-body -->
+		</div><!-- .media -->	
+
+		<hr />
+	<%}%>
+	
+<% }); %> 

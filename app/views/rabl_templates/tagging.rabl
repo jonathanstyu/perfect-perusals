@@ -1,2 +1,2 @@
 object @tagging
-attributes :book, :tagger
+attributes :book, :tagger, :name
