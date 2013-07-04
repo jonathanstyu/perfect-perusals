@@ -22,6 +22,13 @@
 		<h5>Currently Reading</h5>
 		<div id='currently-reading'></div>
 		<hr />
+		<h5>My Profile</h5>
+			<a href="#">
+				<%= @current_user.name %>'s Profile
+			</a><br>
+			<a href="#">
+				<%= @current_user.friends.length %> friends
+			</a>
 	</div><!-- .span4 -->
 </div><!-- .row-fluid -->
 

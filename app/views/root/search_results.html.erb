@@ -1,9 +1,10 @@
 <h2>Search Results</h2>
 <hr />
-<% if @results.empty? %>
+<% if @book_results.empty? && @people_results.empty? %>
 <h3>There are no search results found. Sorry, bro.</h3>
 <%else%>
-
+<h3>Books</h3>
+<div class="book-results">
 	<table border="0" cellspacing="5" cellpadding="5" class='table'>
 		<tr>
 			<th>Image</th>
@@ -12,7 +13,7 @@
 			<th>Avg Rating</th>
 		</tr>
 		
-	<% @results.each do |result| %>
+	<% @book_results.each do |result| %>
 		<tr>
 			<td><img src='<%= result.cover_image.length == 0 ? 
 					result.cover_photo.url : 
@@ -25,7 +26,27 @@
 			<td><%= result.avg_rating %></td>
 		</tr>
 	<%end%>
-	</table>
+	</table>	
+</div><!-- .book-results -->
+<h3>People</h3>
+<div class="people-results">
+	<table border="0" cellspacing="5" cellpadding="5" class='table'>
+		<tr>
+			<th>Email</th>
+			<th>Name</th>
+			<th>Author?</th>
+		</tr>
+	
+	<% @people_results.each do |result| %>
+		<tr>
+			<td><%= result.email %></td>
+			<td><%= result.name %></td>
+			<td><%= result.email.nil? ? "YES" : "NO" %></td>
+		</tr>
+	<%end%>
+	</table>	
+</div><!-- .people-results -->
+
 
 
 <%end%>

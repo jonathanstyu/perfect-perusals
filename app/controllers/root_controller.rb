@@ -15,11 +15,16 @@ class RootController < ApplicationController
   end
   
   def search
-    @search = Book.search do 
+    @book_search = Book.search do 
       fulltext params[:title]
     end
     
-    @results = @search.results
+    @people_search = User.search do 
+      fulltext params[:title]
+    end
+    
+    @book_results = @book_search.results
+    @people_results = @people_search.results
     
     render :search_results
   end

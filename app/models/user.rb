@@ -2,6 +2,11 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :name 
   
   before_save :fill_name
+  
+  searchable do 
+    text :name, :email
+  end
+  # Remember to reindex after adding new fields and user models
     
   has_many :authorships, 
     :foreign_key => :author_id
@@ -21,8 +26,26 @@ class User < ActiveRecord::Base
     :through => :taggings, 
     source: :book
   
-  has_many :friendships, foreign_key: :friender_id
-  has_many :friends, through: :friendships, source: :friendee
+  has_many :friendships, 
+    foreign_key: :friender_id
+  has_many :friends, 
+    through: :friendships, 
+    source: :friendee
+  
+  has_many :follows, 
+    foreign_key: :follower_id
+  has_many :followers, 
+    through: :follows, 
+    source: :follower
+  
+  # has_many :reverse_follows, 
+  #   class_name: "Follow", 
+  #   foreign_key: :follower_id
+  
+  has_many :followings, 
+    through: :follows, 
+    source: :followee
+
   
   def password=(password)
     self.password_hash = Digest::SHA2.base64digest(password)
@@ -42,6 +65,16 @@ class User < ActiveRecord::Base
   def friend(user)
     self.friends << user
     user.friends << self
+  end
+  
+  def follow(user)
+    Follow.create(follower_id: self.id, followee_id: user.id)
+  end
+  
+  def events
+    @events = []
+    @events.merge(self.reviews.to_json)
+    @events.merge()
   end
   
   private

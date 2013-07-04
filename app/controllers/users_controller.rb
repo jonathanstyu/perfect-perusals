@@ -6,11 +6,19 @@ class UsersController < ApplicationController
 
   def show
     if params[:id] == @current_user.id
-      render 'root/dashboard'
+      respond_to do |format|
+        format.html {render 'root/dashboard'}
+        format.json {render json: @current_user.events}
+      end
+      
     else
       @user = User.includes(:authored_books).find(params[:id])
       if @user.authored_books.empty?
-        render :public_profile
+        respond_to do |format|
+          format.html {render :public_profile}
+          format.json {render json: @user.events }
+        end
+        
       else
         render :author_profile
       end
