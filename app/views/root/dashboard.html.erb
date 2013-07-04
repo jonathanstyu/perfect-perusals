@@ -9,12 +9,12 @@
 		<h5>Your Stats Dashboard</h5>
 		<hr />
 		<div class="row-fluid">
-			<div class="span6 well well-small">
-				<h4 style='text-align:center'>Total Books Read:</h4><br>
+			<div class="span6 well well-small" style='text-align:center'>
+				<h5>Total Books Read:</h5><br>
 				<div id='total-read'></div>
 			</div>
-			<div class="span6 well well-small" id='to-read'>
-				<h4 style='text-align:center'>Books To Read:</h4><br>
+			<div class="span6 well well-small" style='text-align:center'>
+				<h5 >Books To Read:</h5><br>
 				<div id='to-read'></div>
 			</div>
 		</div>
@@ -33,8 +33,9 @@ $(function () {
 		success: function () {
 			new Readingapp.Routers.TaggingsStats({
 				collection: taggings, 
-				currentlyReading: $('#currently-reading')
-				
+				currentlyReading: $('#currently-reading'),
+				totalRead: $('#total-read'), 
+				toRead: $('#to-read')
 			}); 
 			Backbone.history.start(); 
 		}

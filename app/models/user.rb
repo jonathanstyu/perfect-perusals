@@ -21,6 +21,9 @@ class User < ActiveRecord::Base
     :through => :taggings, 
     source: :book
   
+  has_many :friendships, foreign_key: :friender_id
+  has_many :friends, through: :friendships, source: :friendee
+  
   def password=(password)
     self.password_hash = Digest::SHA2.base64digest(password)
   end
@@ -34,6 +37,11 @@ class User < ActiveRecord::Base
     self.save!
     
     self.token
+  end
+  
+  def friend(user)
+    self.friends << user
+    user.friends << self
   end
   
   private
