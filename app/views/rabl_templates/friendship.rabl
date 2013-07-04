@@ -1,2 +1,2 @@
 object @friendship
-attributes :friendee
+attributes :friendee, :friender

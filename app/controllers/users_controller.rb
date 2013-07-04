@@ -46,11 +46,15 @@ class UsersController < ApplicationController
       @user = User.find(params[:user_id])
       @events = @user.events
     else
-      @events = @current_user.events
-      # Put the friend feed here. 
+      @events = []
+      @current_user.friends.each do |friend|
+        @events += friend.events
+      end
+      @events.sort_by {|event| event.updated_at }
+    
     end
     
-    render 'rabl_templates/feed', formats: :json
+    render 'rabl_templates/friend_feed', formats: :json
   end
 
 end

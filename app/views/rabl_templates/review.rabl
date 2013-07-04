@@ -1,2 +1,2 @@
 object @review
-attributes :book, :title, :body, :stars
+attributes :book, :title, :body, :stars, :reviewer

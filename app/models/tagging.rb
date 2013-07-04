@@ -2,7 +2,9 @@ class Tagging < ActiveRecord::Base
   attr_accessible :name, :book_id, :user_id
   
   belongs_to :book
-  belongs_to :tagger, :class_name => "User"
+  belongs_to :tagger, 
+    class_name: "User", 
+    foreign_key: :user_id
   
   validates_uniqueness_of :book_id, 
     scope: [:user_id, :name]
