@@ -5,8 +5,12 @@ Readingapp::Application.routes.draw do
   match 'signup', :to => 'users#new'
   match 'mybooks', :to => 'root#my_books'
   match 'search', :to => 'root#search'
+  
   resource :sessions, :only => [:create, :destroy]
-  resources :users
+  resources :users do 
+    post 'friend'
+    delete 'unfriend'
+  end
   resources :books, except: [:index] do 
     resources :reviews, :only => [:create, :index]
   end

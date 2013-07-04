@@ -1,6 +1,9 @@
 <h3><%= @user.name.capitalize %>'s Profile</h3>
-
-<%= button_to "Friend" %>
-
-<h4>Books <%= @user.name %> likes</h4>
-<%= render @user.tagged_books %>
+<div class="friend_button">
+	<%= render partial: "friend_button", locals: {user: @user, current_user: @current_user}%>
+</div><!-- .friend_button -->
+<hr />
+<div id='liked_books'>
+	<h4>Books <%= @user.name %> likes</h4>
+	<%= render @user.tagged_books %>	
+</div><!-- .name -->

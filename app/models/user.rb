@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :name 
+  attr_accessible :email, :password, :name, :biography
   
   before_save :fill_name
   
