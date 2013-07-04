@@ -48,7 +48,7 @@ class Book < ActiveRecord::Base
   def as_json(options={})
     result = super({
       only: [:title], 
-      methods: [:cover, :author_names]
+      methods: [:cover, :author_names, :id]
     }.merge(options))
     
     result 
