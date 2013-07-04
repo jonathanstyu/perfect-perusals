@@ -1,9 +1,7 @@
-<h3><%= @current_user.name.capitalize %>'s Books</h3>
+<h3>Your Friend Feed</h3>
 <hr />
 <div class="row-fluid">
-	<div class="span8">
-		<h4>Explore the Latest Books</h4>
-		<%= render @books %>
+	<div class="span8" id='friend_feed'>
 	</div><!-- .span8 -->
 	<div class="span4">
 		<h5>Your Stats Dashboard</h5>
@@ -36,17 +34,30 @@
 $(function () {
 	Readingapp.initialize(); 
 	var taggings = new Readingapp.Collections.Taggings(); 
-	taggings.fetch({
-		success: function () {
-			new Readingapp.Routers.TaggingsStats({
-				collection: taggings, 
-				currentlyReading: $('#currently-reading'),
-				totalRead: $('#total-read'), 
-				toRead: $('#to-read')
-			}); 
-			Backbone.history.start(); 
-		}
-	}); 
+	var feed = new Readingapp.Collections.Feeds(); 
+		
+	var runStatsDashboard = function () {
+		new Readingapp.Routers.TaggingsStats({
+			collection: taggings, 
+			currentlyReading: $('#currently-reading'),
+			totalRead: $('#total-read'), 
+			toRead: $('#to-read')
+		});
+	}
+	
+	var runFriendFeed = function () {
+		new Readingapp.Routers.Feeds({
+			collection: feed, 
+			rootElement: $('#friend_feed') 
+		}); 
+	}
+	
+	// Execute anon function when both fetches for taggings, feed are successful 
+	$.when(taggings.fetch(), feed.fetch()).then(function () {
+		runStatsDashboard(); 
+		runFriendFeed(); 
+		Backbone.history.start(); 
+	})	 
 	
 }); 
 </script>

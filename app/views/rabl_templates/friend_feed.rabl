@@ -1,4 +1,4 @@
-collection @events => :events
+collection @events, :object_root => false
 attributes :created_at, :updated_at
 node (:type) {|event| event.class.name}
 
