@@ -42,7 +42,12 @@ class UsersController < ApplicationController
   end
   
   def edit
-    render :account
+    @user = User.find(params[:id])
+    if @user == @current_user
+      render :account
+    else
+      raise ActionController::RoutingError.new('Not Found')
+    end
   end
   
   def friend    

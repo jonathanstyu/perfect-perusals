@@ -76,7 +76,8 @@ class User < ActiveRecord::Base
   
   def as_json(options={})
     result = super({
-      only: [:name, :biography]
+      only: [:name, :biography], 
+      methods: [:picture]
     }.merge(options))
     
     result

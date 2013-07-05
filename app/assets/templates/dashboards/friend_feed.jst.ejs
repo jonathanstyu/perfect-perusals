@@ -3,7 +3,10 @@
 		<% var friendship = feed.get('friendship')%>
 		<div class="media">
 			<a href="#">
-				<img>	
+				<img class='pull-left' src='<%= friendship.friender.picture %>' style='width: 60px;'>	
+			</a>
+			<a href="#">
+				<img class='pull-left' src='<%= friendship.friendee.picture %>' style='width: 60px;'>	
 			</a>
 			<div class="media-body">
 				<h4 class='media-heading'>
