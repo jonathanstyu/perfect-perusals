@@ -80,7 +80,7 @@ class UsersController < ApplicationController
   end
   
   def friends
-    @friends = User.friends
+    @friends = @current_user.friends
     render 'rabl_templates/friends', formats: :json
   end
 

@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
 
   has_attached_file :profile_pic, 
     s3_host_name: "s3-us-west-1.amazonaws.com", 
-    default_url: "/assets/placeholder.jpg"
+    default_url: "https://s3-us-west-1.amazonaws.com/reading-app-book-covers/placeholder.jpg"
   
   def password=(password)
     self.password_hash = Digest::SHA2.base64digest(password)
@@ -91,6 +91,10 @@ class User < ActiveRecord::Base
     @events.sort_by! {|event| event.created_at }
     
     @events
+  end
+  
+  def picture
+    self.profile_pic.url
   end
     
   private
