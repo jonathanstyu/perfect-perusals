@@ -6,6 +6,7 @@ Readingapp::Application.routes.draw do
   match 'mybooks', :to => 'root#my_books'
   match 'search', :to => 'root#search'
   match 'feed', :to => 'users#feed'
+  match 'friends', :to => 'users#friends'
   
   resource :sessions, :only => [:create, :destroy]
   resources :users do 

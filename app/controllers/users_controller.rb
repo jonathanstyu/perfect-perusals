@@ -78,5 +78,10 @@ class UsersController < ApplicationController
     
     render 'rabl_templates/friend_feed', formats: :json
   end
+  
+  def friends
+    @friends = User.friends
+    render 'rabl_templates/friends', formats: :json
+  end
 
 end

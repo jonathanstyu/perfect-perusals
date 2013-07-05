@@ -14,7 +14,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(params[:book])
     if @book.save 
-      render json: @book
+      redirect_to root_path
     else
       render json: @book.errors
     end
