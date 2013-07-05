@@ -23,7 +23,11 @@
 			</td>
 			<td><%= tagging.escape('updated_at') %></td>
 			<td><%= tagging.escape('created_at') %></td>
-			<td id="shelf"><%= tagging.escape('name') %></td>
+			<td id="shelf">
+				<a href="#/shelf/<%= tagging.escape('name') %>">
+					<%= tagging.escape('name') %>
+				</a>
+			</td>
 		</tr>		
 	<% }); %>
 </table>

@@ -30,7 +30,7 @@ class Book < ActiveRecord::Base
   def avg_rating
     return 0.0 if self.reviews.empty?
     star_sum = self.reviews.collect {|review| review.stars }.sum
-    return (star_sum / self.reviews.size).to_f
+    return (star_sum.to_f / self.reviews.size.to_f).to_f
   end
   
   def author_names
