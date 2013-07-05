@@ -57,8 +57,7 @@ class UsersController < ApplicationController
       @current_user.friends.each do |friend|
         @events += friend.events
       end
-      @events.sort_by {|event| event.updated_at }
-    
+      @events.sort_by {|event| event.updated_at }.reverse
     end
     
     render 'rabl_templates/friend_feed', formats: :json

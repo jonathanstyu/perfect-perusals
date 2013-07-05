@@ -85,7 +85,7 @@ class User < ActiveRecord::Base
     event_names.each do |event|
       @events += self.send(event)
     end
-    @events.sort_by {|event| event.updated_at }
+    @events.sort_by! {|event| event.created_at }
     
     @events
   end
