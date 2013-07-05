@@ -7,6 +7,18 @@ Readingapp.Routers.Feeds = Backbone.Router.extend({
 		this.$currentlyReading = options.currentlyReading; 
 		this.$totalRead = options.totalRead; 
 		this.$toRead = options.toRead; 
+		
+		var readCount = this.tagcollection.where({name: "read"}).length;
+		var toCount = this.tagcollection.where({name: "to-read"}).length;
+		
+		var minitable = new Readingapp.Views.TagTable({
+			collection: this.tagcollection
+		}); 
+		
+		this.$currentlyReading.html(minitable.render().$el); 
+		this.$totalRead.html(readCount); 
+		this.$toRead.html(toCount); 
+		
 	}, 
 	
 	routes: {
@@ -20,16 +32,6 @@ Readingapp.Routers.Feeds = Backbone.Router.extend({
 			collection: this.feedcollection
 		}); 
 		
-		var readCount = this.tagcollection.where({name: "read"}).length;
-		var toCount = this.tagcollection.where({name: "to-read"}).length;
-		
-		var minitable = new Readingapp.Views.TagTable({
-			collection: this.tagcollection
-		}); 
-		
-		this.$currentlyReading.html(minitable.render().$el); 
-		this.$totalRead.html(readCount); 
-		this.$toRead.html(toCount); 
 		this.$feed.html(feed.render().$el); 
 	}, 
 	
