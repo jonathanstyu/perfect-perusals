@@ -23,7 +23,6 @@ Readingapp.Routers.Feeds = Backbone.Router.extend({
 	
 	routes: {
 		"": 'index', 
-		"account": 'showAccount',
 		'friends': 'showFriends'
 	},
 	
@@ -33,13 +32,6 @@ Readingapp.Routers.Feeds = Backbone.Router.extend({
 		}); 
 		
 		this.$feed.html(feed.render().$el); 
-	}, 
-	
-	showAccount: function () {
-		var account = new Readingapp.Views.AccountShow({
-		}); 
-		
-		this.$feed.html(account.render().$el); 
 	}, 
 	
 	showFriends: function () {

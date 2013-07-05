@@ -23,8 +23,8 @@
 		<h5>My Profile</h5>
 		<ul>
 			<li>
-				<a href="#/account">
-					<%= @current_user.name %>'s Profile
+				<a href="<%= edit_user_path(@current_user) %>">
+					Edit <%= @current_user.name %>'s Account
 				</a>
 			</li>
 			<li>

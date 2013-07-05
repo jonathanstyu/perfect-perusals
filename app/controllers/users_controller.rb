@@ -50,6 +50,15 @@ class UsersController < ApplicationController
     end
   end
   
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(params[:user])
+      redirect_to user_path(@user)
+    else
+      redirect_to :back
+    end
+  end
+  
   def friend    
     @person_to_friend = User.find(params[:user_id])
     @current_user.friend(@person_to_friend)
