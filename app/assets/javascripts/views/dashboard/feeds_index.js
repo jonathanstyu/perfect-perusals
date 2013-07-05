@@ -3,7 +3,7 @@ Readingapp.Views.FeedsIndex = Backbone.View.extend({
 		this.collection = options.collection;  
 	}, 
 
-  template: JST['dashboards/index'],
+  template: JST['dashboards/friend_feed'],
 	
 	render: function () {
 		var content = this.template({

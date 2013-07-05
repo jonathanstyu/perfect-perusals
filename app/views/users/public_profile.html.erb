@@ -1,9 +1,23 @@
-<h3><%= @user.name.capitalize %>'s Profile</h3>
-<div class="friend_button">
-	<%= render partial: "layouts/friend_button", locals: 
-		{user: @user, 
-		current_user: @current_user} %>
-</div><!-- .friend_button -->
+<div class="media">
+	<img class='media-object pull-left profilepic' 
+		src='<%= @user.profile_pic.url %>'>	
+		
+	<div class="media-body">
+		<div class="media-heading">
+			<h3><%= @user.name.capitalize%></h3>
+			<div class="friend_button">
+				<%= render partial: "layouts/friend_button", locals: 
+					{user: @user, 
+					current_user: @current_user} %>
+			</div><!-- .friend_button -->
+			<div id='biography'>
+				<h4>A Little Bit About Me ...</h4>
+				<%= @user.biography || "Nothing here ... :(" %>
+			</div><!-- .biography -->
+			
+		</div><!-- .media-heading -->
+	</div><!-- .media-body -->
+</div><!-- .media -->
 <hr />
 <div id='liked_books'>
 	<h4>Books <%= @user.name %> likes</h4>
