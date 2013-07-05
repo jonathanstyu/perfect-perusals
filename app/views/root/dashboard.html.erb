@@ -32,6 +32,11 @@
 					<%= @current_user.friends.length %> friends
 				</a>				
 			</li>
+			<li>
+				<a href="/users/<%= @current_user.id %>">
+					<%= @current_user.name %>'s Public Profile
+				</a>
+			</li>
 		</ul>
 	</div><!-- .span4 -->
 </div><!-- .row-fluid -->
@@ -41,12 +46,14 @@ $(function () {
 	Readingapp.initialize(); 
 	var taggings = new Readingapp.Collections.Taggings(); 
 	var feed = new Readingapp.Collections.Feeds(); 
+	var friends = new Readingapp.Collections.Friends(); 
 	
 	// Execute anon function when both fetches for taggings, feed are successful 
-	$.when(taggings.fetch(), feed.fetch()).then(function () {
+	$.when(taggings.fetch(), feed.fetch(), friends.fetch()).then(function () {
 		new Readingapp.Routers.Feeds({
 			tagcollection: taggings,
 			feedcollection: feed, 
+			friendcollection: friends,
 			rootElement: $('#friend_feed') ,
 			currentlyReading: $('#currently-reading'),
 			totalRead: $('#total-read'), 

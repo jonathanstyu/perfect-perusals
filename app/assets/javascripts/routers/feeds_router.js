@@ -2,6 +2,7 @@ Readingapp.Routers.Feeds = Backbone.Router.extend({
 	initialize: function (options) {
 		this.tagcollection = options.tagcollection; 
 		this.feedcollection = options.feedcollection; 
+		this.friendcollection = options.friendcollection;
 		this.$feed = options.rootElement; 
 		this.$currentlyReading = options.currentlyReading; 
 		this.$totalRead = options.totalRead; 
@@ -10,7 +11,8 @@ Readingapp.Routers.Feeds = Backbone.Router.extend({
 	
 	routes: {
 		"": 'index', 
-		"account": 'showAccount'
+		"account": 'showAccount',
+		'friends': 'showFriends'
 	},
 	
 	index: function () {
@@ -36,5 +38,13 @@ Readingapp.Routers.Feeds = Backbone.Router.extend({
 		}); 
 		
 		this.$feed.html(account.render().$el); 
+	}, 
+	
+	showFriends: function () {
+		var content = JST['dashboards/show_friends']({
+			friends: this.friendcollection 
+		}); 
+		this.$feed.html(content); 
 	}
+	
 });

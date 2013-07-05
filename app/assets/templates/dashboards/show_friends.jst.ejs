@@ -1,0 +1,20 @@
+<a href="#">Back to the Feed...</a>
+
+<% friends.each(function (friend) { %>
+	<div class="media">
+		<a href="/users/<%= friend.escape('id')%>">
+			<img src='<%= friend.escape("picture") %>' 
+				style='width: 80px;' 
+				class='media-object pull-left'>	
+		<div class="media-body">
+			<h4 class='media-heading'>
+				<%= friend.escape("name") %>
+			</h4></a>
+			<p>
+				<h5>Here is some stuff about them:</h5>
+				<%= friend.escape("biography") %>
+			</p>
+		</div><!-- .media-body -->
+	</div><!-- .media -->	
+	<hr />
+<%}); %>
