@@ -25,7 +25,7 @@
 			</a>
 			<div class="media-body">
 				<h4 class='media-heading'>
-					<%= comment.commenter.name %> commented on <%= comment.review.reviewer.name%>'s review of <%= comment.review.book.title%>
+					<%= comment.commenter.name %> commented on <%= comment.review.reviewer.name%>'s review of <a href='/books/<%= comment.review.book.id %>'><%= comment.review.book.title%></a>
 				</h4>
 				<p><i>
 					"<%= comment.text%>"
@@ -43,7 +43,7 @@
 			</a>
 			<div class="media-body">
 				<h4 class='media-heading'>
-					<%= tag.tagger.name %> moved the book '<%= tag.book.title %>' to the bookshelf: "<%= tag.name%>"
+					<%= tag.tagger.name %> moved the book <a href="/books/<%= tag.book.id %>"><%= tag.book.title %></a> to the bookshelf: "<%= tag.name%>"
 				</h4>
 				<p><i>
 					Do you want to read this book too?
@@ -62,10 +62,10 @@
 			</a>
 			<div class="media-body">
 				<h4 class='media-heading'>
-					<%= review.reviewer.name %> gave the book '<%= review.book.title %>' <%= review.stars %> stars and said about it: 
+					<%= review.reviewer.name %> gave the book <a href='/books/<%= review.book.id %>'><%= review.book.title %></a> <%= review.stars %> stars and said about it: 
 				</h4>
 				<p><i>
-					"<%= review.body %>"
+					<a href="reviews/<%= review.id %>"><%= review.body %></a>
 				</i></p>
 			</div><!-- .media-body -->
 		</div><!-- .media -->	

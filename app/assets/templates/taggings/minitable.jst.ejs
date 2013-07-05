@@ -14,4 +14,15 @@
 			<td><%= tagging.get('book').avg_rating.toFixed(2) %></td>
 		</tr>		
 	<% }); %>
+	
+	<%if (taggings.length == 0) { %>
+		<tr>
+			<td>
+				Your queue is empty. Add some books, goddammit!
+			</td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	<%}%>
 </table>

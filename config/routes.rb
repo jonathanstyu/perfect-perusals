@@ -19,6 +19,6 @@ Readingapp::Application.routes.draw do
   resources :reviews, :only => [:delete, :update, :index, :show] do 
     resources :comments, :only => [:index, :create, :delete]
   end
-  resources :taggings
+  resources :taggings, :except => [:new]
   
 end
