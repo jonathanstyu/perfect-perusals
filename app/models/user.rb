@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :name, :biography
+  attr_accessible :email, :password, :name, :biography, :profile_pic
   
   before_save :fill_name
   
@@ -46,6 +46,8 @@ class User < ActiveRecord::Base
     through: :follows, 
     source: :followee
 
+  has_attached_file :profile_pic, 
+    s3_host_name: "s3-us-west-1.amazonaws.com"
   
   def password=(password)
     self.password_hash = Digest::SHA2.base64digest(password)

@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
     @user = User.find_by_token(session[:token])
     @user.token = nil
     session[:token] = nil 
+    flash[:success] = "You have signed out"
     redirect_to login_path
   end
   

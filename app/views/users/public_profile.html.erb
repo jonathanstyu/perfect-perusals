@@ -1,6 +1,8 @@
 <h3><%= @user.name.capitalize %>'s Profile</h3>
 <div class="friend_button">
-	<%= render partial: "friend_button", locals: {user: @user, current_user: @current_user}%>
+	<%= render partial: "layouts/friend_button", locals: 
+		{user: @user, 
+		current_user: @current_user} %>
 </div><!-- .friend_button -->
 <hr />
 <div id='liked_books'>

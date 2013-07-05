@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :require_login, except: [:new, :show]
+  before_filter :require_login, except: [:new, :show, :create, :update]
     
   
   def index
@@ -9,7 +9,23 @@ class UsersController < ApplicationController
   end
   
   def new
+    @user = User.new
     render :signup
+  end
+  
+  def create
+    unless params[:user][:password] == params[:passconfirm]
+      flash[:error] = "The passwords do not match"
+      render :signup, :status => 422
+    end
+    
+    @user = User.new(params[:user])
+    p @user
+    if @user.save 
+      redirect_to user_path(@user)
+    else
+      render :signup, :status => 422
+    end
   end
 
   def show

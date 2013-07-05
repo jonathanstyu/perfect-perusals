@@ -1,3 +1,6 @@
 <h2>Sign Up For Perfect Perusals</h2>
 <hr />
-<%= render partial: 'session/form', locals: { path: users_path, method: "post" }%>
+<%= render partial: 'users/user_form', locals: 
+	{ path: users_path, 
+		method: "post", 
+		user: @user }%>
