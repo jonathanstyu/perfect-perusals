@@ -9,9 +9,15 @@
 			</a>			
 		</h5>
 		<% if @current_user %>
-		<div class='well-small tagging-module' data-id='<%= book.id %>'>
-			<a href="<%= book_path(book) %>" class='btn btn-mini btn-info'>Add to Shelf</a>
-		</div>
+			<% if @current_user.tagged_books.include?(book) %>
+				<a href="<%= book_path(book) %>" 
+					class='btn btn-mini btn-info'>
+				<%= @current_user.taggings.where(book_id: book.id).first.name %>
+				</a>
+			<%else%>
+				<a href="<%= book_path(book) %>" class='btn btn-mini btn-primary'>Add to Shelf</a>
+			<%end%>
+		
 		<%else%>
 		<div id="tagging-module" class='well-small' data-id='<%= book.id %>'>
 			<a href="<%= login_path %>" class='btn btn-mini btn-inverse'>Log in to Add to Shelf</a>
