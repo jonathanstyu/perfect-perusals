@@ -9,7 +9,8 @@ Readingapp.Routers.Feeds = Backbone.Router.extend({
 	}, 
 	
 	routes: {
-		"": 'index'
+		"": 'index', 
+		"account": 'showAccount'
 	},
 	
 	index: function () {
@@ -28,5 +29,12 @@ Readingapp.Routers.Feeds = Backbone.Router.extend({
 		this.$totalRead.html(readCount); 
 		this.$toRead.html(toCount); 
 		this.$feed.html(feed.render().$el); 
+	}, 
+	
+	showAccount: function () {
+		var account = new Readingapp.Views.AccountShow({
+		}); 
+		
+		this.$feed.html(account.render().$el); 
 	}
 });

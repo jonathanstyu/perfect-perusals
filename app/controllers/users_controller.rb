@@ -1,6 +1,13 @@
 class UsersController < ApplicationController
   before_filter :require_login, except: [:new, :show]
     
+  
+  def index
+    respond_to do |format|
+      format.json {render json: @current_user.to_json({except: :password_hash})}
+    end
+  end
+  
   def new
     render :signup
   end

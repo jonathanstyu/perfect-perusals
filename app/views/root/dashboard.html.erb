@@ -21,12 +21,18 @@
 		<div id='currently-reading'></div>
 		<hr />
 		<h5>My Profile</h5>
-			<a href="#">
-				<%= @current_user.name %>'s Profile
-			</a><br>
-			<a href="#">
-				<%= @current_user.friends.length %> friends
-			</a>
+		<ul>
+			<li>
+				<a href="#/account">
+					<%= @current_user.name %>'s Profile
+				</a>
+			</li>
+			<li>
+				<a href="#/friends">
+					<%= @current_user.friends.length %> friends
+				</a>				
+			</li>
+		</ul>
 	</div><!-- .span4 -->
 </div><!-- .row-fluid -->
 
