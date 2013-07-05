@@ -10,9 +10,19 @@
 					{user: @user, 
 					current_user: @current_user} %>
 			</div><!-- .friend_button -->
+			<h4>A Little Bit About Me ...</h4>
 			<div id='biography'>
-				<h4>A Little Bit About Me ...</h4>
-				<%= @user.biography || "Nothing here ... :(" %>
+				
+				<% if @user.biography %>
+					<%= @current_user.biography %>
+				<%else%>
+					<p>
+						Nothing here ... 
+					</p>
+					<a href="#" id='edit'>
+						<%= (@current_user && @current_user == @user) ? "Edit Me" : "" %>
+					</a>
+				<%end%>
 			</div><!-- .biography -->
 			
 		</div><!-- .media-heading -->
@@ -23,3 +33,9 @@
 	<h4>Books <%= @user.name %> likes</h4>
 	<%= render @user.tagged_books %>	
 </div><!-- .name -->
+
+<script type="text/javascript" charset="utf-8">
+	$(function () {
+		$('a')
+	}); 
+</script>

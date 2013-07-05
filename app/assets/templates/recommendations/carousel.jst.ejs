@@ -1,0 +1,43 @@
+<h3>Some Great Recommendations</h3>
+
+<div class="carousel slide" id='recCarousel'>
+<%= console.log(recentRecs) %> 
+	<ol class='carousel-indicators'>
+		<% for (var i = 0; i < recentRecs.length; i++) { %>
+			<li data-target='#recCarousel' data-slide-to="<%= i%>"></li>
+		<%}%>		
+	</ol>
+	
+	
+	<div class="carousel-inner" id='reccarouselinner'>
+		<div class="item active">
+			<a href='books/<%= recentRecs[0].id %>'>
+				<img src='<%= recentRecs[0].cover %>' class='carouselimage'>
+			</a>
+			<div class="carousel-caption">
+				<h4><%= recentRecs[0].title %> </h4>
+				<p>
+					<%= recentRecs[0].synopsis.substring(0, 150) %>...
+				</p>
+			</div><!-- .carousel-caption -->
+		</div><!-- .item active -->
+		
+		<% for (var i = 1; i < recentRecs.length; i++) { %>			
+			<div class="item">
+				<a href="/books/<%= recentRecs[i] %>">
+					<img src='<%= recentRecs[i].cover %>' class='carouselimage'>
+				</a>
+				<div class="carousel-caption">
+					<h4><%= recentRecs[i].title %></h4>
+					<p>
+						<%= recentRecs[i].synopsis.substring(0, 150) %>...
+					</p>
+				</div><!-- .carousel-caption -->
+			</div><!-- .item -->			
+		<% } %>
+	</div><!-- .carousel-inner -->
+	<a class="carousel-control left" href='#recCarousel' data-slide='prev'>&lsaquo;</a>
+	<a class="carousel-control right" href='#recCarousel' data-slide='next'>&rsaquo;</a>
+	</div><!-- .carousel-control left -->
+
+</div><!-- .carousel slide -->

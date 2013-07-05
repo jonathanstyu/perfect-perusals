@@ -32,3 +32,22 @@ body {
 #pperusals {
 	margin-left: 0px; 
 }
+
+#recCarousel {
+	height: 500px;
+	width: 600px;
+}
+
+#reccarouselinner {
+	height: 600px;
+	width: 600px;	
+}
+
+.carouselimage {
+	height: 420px;
+	padding-left: 150px;
+}
+
+#rec-header {
+	background-image: image-url('reading.jpg');
+}

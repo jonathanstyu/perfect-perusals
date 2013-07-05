@@ -3,7 +3,7 @@
 <div class="row-fluid">
 	<div class="span8 well well-small" id='friend_feed'>
 	</div><!-- .span8 -->
-	<div class="span4">
+	<div class="span4" id='dashboard'>
 		<h5>Your Stats Dashboard</h5>
 		<hr />
 		<div class="row-fluid">
@@ -43,6 +43,7 @@
 
 <script type="text/javascript" charset="utf-8">
 $(function () {
+	
 	Readingapp.initialize(); 
 	var taggings = new Readingapp.Collections.Taggings(); 
 	var feed = new Readingapp.Collections.Feeds(); 

@@ -89,5 +89,11 @@ class UsersController < ApplicationController
     @friends = @current_user.friends
     render 'rabl_templates/friends', formats: :json
   end
+  
+  def recommendations
+    @books = Book.all
+    @recommendations = @books[-4..-1]
+    render :recommendations
+  end
 
 end

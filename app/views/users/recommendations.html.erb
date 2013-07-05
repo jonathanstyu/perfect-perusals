@@ -1,2 +1,39 @@
-<h4>Explore the Latest Books</h4>
-<%= render @books %>
+<div class="hero-unit" id='rec-header'>
+	<h3>Curl Up With a Few Good Books</h3>
+	<p class='lead'>Great recommendations from your friends!</p>
+</div><!-- .hero-unit -->
+
+
+
+<div class="row">
+	<div class="span8" id='maincontent'>
+	</div>
+	<div class="span4" id='sidebar'>
+
+	</div>
+	
+</div><!-- .row-fluid -->
+
+<script type="text/templates" id='recentrec'>
+	<%= @recommendations.to_json.html_safe%>
+</script>
+
+<script type="text/javascript" charset="utf-8">
+	$(function () {
+		Readingapp.initialize(); 
+		var recentRecs = JSON.parse($('#recentrec').html()); 
+		var friends = new Readingapp.Collections.Friends(); 
+		
+		$.when(friends.fetch()).then(function () {
+			new Readingapp.Routers.Recommendations({
+				maincontent: $('#maincontent'), 
+				sidebar: $('#sidebar'),
+				recentRecs: recentRecs, 
+				friendscollection: friends
+			}); 
+			Backbone.history.start(); 
+			
+		}); 
+		
+	}); 
+</script>

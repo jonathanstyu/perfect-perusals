@@ -1,0 +1,16 @@
+<ul class='nav nav-list'>
+	<li class='active'>
+		<a href="#">
+			Recent Perusals We Think You Might Like
+		</a>
+	</li>
+	
+	<% friends.each(function (friend) { %>		
+		<li>
+			<a href="#/<%= friend.escape('id') %>">
+				Recently Liked Books From <%= friend.escape('name') %>
+			</a>
+		</li>
+	<% }); %>
+	
+</ul>
