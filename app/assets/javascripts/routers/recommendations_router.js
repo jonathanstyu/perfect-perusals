@@ -11,7 +11,8 @@ Readingapp.Routers.Recommendations = Backbone.Router.extend({
 	}, 
 	
 	routes: {
-		"": "index"
+		"": "index",
+		"friend/:id": "friendRec"
 	}, 
 	
 	index: function () {
@@ -19,5 +20,30 @@ Readingapp.Routers.Recommendations = Backbone.Router.extend({
 			recentRecs: this.recentRecs
 		}); 
 		this.$maincontent.html(carouselView.render().$el); 
+	}, 
+	
+	friendRec: function (id) {
+		var that = this; 
+		var url = '/users/'+ id +'/feed'; 
+		var parseReviews = function (data) {
+			var reviews = []
+			data.forEach(function (json) {
+				if (json.type == "Review" && json.review.stars > 3) {
+					reviews.push(json); 
+				}
+			}); 
+			return reviews; 
+		}
+		
+		$.ajax({
+			url: url, 
+			method: "get", 
+			success: function (data) {
+				var friendRecs = parseReviews(data); 
+				that.$maincontent.html(JST['recommendations/friend_rec']({
+					friendRec: friendRecs
+				})); 
+			}
+		}); 
 	}
 });

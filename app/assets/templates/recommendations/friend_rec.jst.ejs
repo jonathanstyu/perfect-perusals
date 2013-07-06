@@ -1,0 +1,39 @@
+<h3>Some Great Recommendations</h3>
+<div class="carousel slide" id='recCarousel'>
+	<ol class='carousel-indicators'>
+		<% for (var i = 0; i < friendRec.length; i++) { %>
+			<li data-target='#recCarousel' data-slide-to="<%= i%>"></li>
+		<%}%>		
+	</ol>
+	
+	
+	<div class="carousel-inner" id='reccarouselinner'>
+		
+		<% for (var i = 0; i < friendRec.length; i++) { %>			
+			<% if (i == 0) { %>
+				<div class="item active">
+			<% } else { %>
+				<div class="item">
+			<% }%>
+				<% review = friendRec[i].review %>
+				<a href='books/<%= review.book.id %>'>
+					<img src='<%= review.book.cover %>' class='carouselimage'>
+				</a>
+				<div class="carousel-caption">
+				
+					<h4><%= review.book.title.substring(0,25)%>  : <%= review.stars %> Stars</h4>
+					<p>
+						<%= review.body.substring(0, 150) %>...
+					</p>
+					<p style='text-align:center;'>
+						<a href="#" class='btn btn-mini btn-danger' id=''>Want to Read</a>
+					</p>
+				</div><!-- .carousel-caption -->
+			</div>
+		<% } %>
+	</div><!-- .carousel-inner -->
+	<a class="carousel-control left" href='#recCarousel' data-slide='prev'>&lsaquo;</a>
+	<a class="carousel-control right" href='#recCarousel' data-slide='next'>&rsaquo;</a>
+	</div><!-- .carousel-control left -->
+
+</div><!-- .carousel slide -->

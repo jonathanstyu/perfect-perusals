@@ -1,7 +1,6 @@
 <h3>Some Great Recommendations</h3>
 
 <div class="carousel slide" id='recCarousel'>
-<%= console.log(recentRecs) %> 
 	<ol class='carousel-indicators'>
 		<% for (var i = 0; i < recentRecs.length; i++) { %>
 			<li data-target='#recCarousel' data-slide-to="<%= i%>"></li>
@@ -19,6 +18,9 @@
 				<p>
 					<%= recentRecs[0].synopsis.substring(0, 150) %>...
 				</p>
+				<p style='text-align:center;'>
+					<a href="#" class='btn btn-mini btn-danger' id=''>Want to Read</a>
+				</p>
 			</div><!-- .carousel-caption -->
 		</div><!-- .item active -->
 		
@@ -31,6 +33,9 @@
 					<h4><%= recentRecs[i].title %></h4>
 					<p>
 						<%= recentRecs[i].synopsis.substring(0, 150) %>...
+					</p>
+					<p style='text-align:center;'>
+						<a href="#" class='btn btn-mini btn-danger'>Want to Read</a>
 					</p>
 				</div><!-- .carousel-caption -->
 			</div><!-- .item -->			

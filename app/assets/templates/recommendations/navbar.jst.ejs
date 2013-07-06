@@ -7,7 +7,7 @@
 	
 	<% friends.each(function (friend) { %>		
 		<li>
-			<a href="#/<%= friend.escape('id') %>">
+			<a href="#/friend/<%= friend.escape('id') %>">
 				Recently Liked Books From <%= friend.escape('name') %>
 			</a>
 		</li>
