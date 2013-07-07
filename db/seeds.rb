@@ -10,6 +10,9 @@ User.create(name: "paul starr")
 User.create(name: "hajime isayama")
 User.create(name: "adam johnson")
 
+User.create(email: "angela@", password: "pass", name: "angela")
+User.create(email: "audrey@", password: "pass", name: "audrey")
+
 Book.create(title: "kafka at the shore", synopsis: "Kafka on the Shore, a tour de force of metaphysical reality, is powered by two remarkable characters: a teenage boy, Kafka Tamura, who runs away from home either to escape a gruesome oedipal prophecy or to search for his long-missing mother and sister; and an aging simpleton called Nakata, who never recovered from a wartime affliction and now is drawn toward Kafka for reasons that, like the most basic activities of daily life, he cannot fathom. Their odyssey, as mysterious to them as it is to us, is enriched throughout by vivid accomplices and mesmerizing events. Cats and people carry on conversations, a ghostlike pimp employs a Hegel-quoting prostitute, a forest harbors soldiers apparently unaged since World War II, and rainstorms of fish (and worse) fall from the sky. There is a brutal murder, with the identity of both victim and perpetrator a riddle - yet this, along with everything else, is eventually answered, just as the entwined destinies of Kafka and Nakata are gradually revealed, with one escaping his fate entirely and the other given a fresh start on his own", cover_image: "http://d.gr-assets.com/books/1348995813l/4929.jpg", isbn: 1111)
 Book.create(title: "norwegian wood", synopsis: "This stunning and elegiac novel by the author of the internationally acclaimed Wind-Up Bird Chronicle has sold over 4 million copies in Japan and is now available to American audiences for the first time.It is sure to be a literary event.", cover_image: "http://d.gr-assets.com/books/1320451630l/11297.jpg", isbn: 1112)
 Book.create(title: "spice and wolf 1", synopsis: "The life of a traveling merchant is a lonely one, a fact with which Kraft Lawrence is well acquainted. Wandering from town to town with just his horse, cart, and whatever wares have come his way, the peddler has pretty well settled into his routine-that is, until the night Lawrence finds a wolf goddess asleep in his cart. Taking the form of a fetching girl with wolf ears and a tail, Holo has wearied of tending to harvests in the countryside and strikes up a bargain with the merchant to lend him the cunning of 'Holo the Wisewolf' to increase his profits in exchange for taking her along on his travels. What kind of businessman could turn down such an offer? Lawrence soon learns, though, that having an ancient goddess as a traveling companion can be a bit of a mixed blessing. Will this wolf girl turn out to be too wild to tame?", cover_image: "http://d.gr-assets.com/books/1340904653l/6483360.jpg", isbn: 1113)
@@ -36,7 +39,11 @@ Authorship.create(book_id: 7, author_id: 8)
 
 
 Review.create(title: "Crazy!", body: "There was so much going on that I loved it.", stars: 4, reviewer_id: 2, book_id: 4)
-Review.create(title: "Good book", body: "There was so much going on that I loved it.", stars: 4, reviewer_id: 2, book_id: 1)
+Review.create(title: "Good book", body: "There was so much going on that I loved it.", stars: 5, reviewer_id: 2, book_id: 1)
+Review.create(title: "Economics is fun", body: "The thing about this book is that it is always giving you something to think about, and cute stuff too.", stars: 4, reviewer_id: 1, book_id: 3)
+Review.create(title: "Manga is killing it righ tnow", body: "AOT is the best in the world.", stars: 5, reviewer_id: 3, book_id: 6)
+Review.create(title: "Needed editor", body: "Way too long and i did not really get it", stars: 2, reviewer_id: 2, book_id: 3)
+Review.create(title: "Pretty cool but didn't get it", body: "Godo book but I felt that it was not as good enought o win the pulitzer", stars: 3, reviewer_id: 1, book_id: 5)
 
 Tagging.create(name: "to-read", book_id: 7, user_id: 2)
 Tagging.create(name: "read", book_id: 6, user_id: 2)
@@ -51,7 +58,12 @@ Tagging.create(name: "to-read", book_id: 1, user_id: 3)
 Tagging.create(name: "read", book_id: 3, user_id: 3)
 Tagging.create(name: "currently-reading", book_id: 7, user_id: 3)
 
-
-
 Comment.create(text: "Well what else do you have to say?", review_id: 2, commenter_id: 1)
 Comment.create(text: "What do you mean?", review_id: 2, commenter_id: 2)
+
+Friendship.create(friender_id: 1, friendee_id: 2)
+Friendship.create(friender_id: 3, friendee_id: 1)
+Friendship.create(friender_id: 1, friendee_id: 3)
+Friendship.create(friender_id: 1, friendee_id: 10)
+Friendship.create(friender_id: 10, friendee_id: 3)
+Friendship.create(friender_id: 11, friendee_id: 2)

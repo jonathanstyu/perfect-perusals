@@ -1,10 +1,13 @@
-<div class="name">
-	<b><%= review.reviewer.name %> wrote: <%= review.title %></b>
-	<p>
-		Stars: <%= review.stars %><br>
-		Body: <%= review.body %>
-	</p>
-	<p>
-		<a href="<%= review_path(review) %>">Comment</a>
-	</p>	
-</div>
+<div class="media">
+	<a href="" class='pull-left'>
+		<img src='<%= review.book.cover %>' style='height:75px' class='media-object'>	
+	</a>
+	<div class="media-body">
+		<h4 class='media-heading'>
+			You gave the book <a href='/books/<%= review.book.id %>'><%= review.book.title %></a> <%= review.stars %> stars and said about it: 
+		</h4>
+		<p><i>
+			<a href="reviews/<%= review.id %>"><%= review.body %></a>
+		</i></p>
+	</div><!-- .media-body -->
+</div><!-- .media -->	

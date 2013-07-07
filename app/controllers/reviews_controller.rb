@@ -2,10 +2,10 @@ class ReviewsController < ApplicationController
   before_filter :require_login
 
   def index
-    @reviews = @current_user.reviews
+    @reviews = @current_user.reviews.includes(:book, :reviewer)
     respond_to do |format|
       format.html {render :index}
-      format.json {render json: @reviews}
+      format.json {render 'rabl_templates/reviews', format: :json}
     end    
   end
   
