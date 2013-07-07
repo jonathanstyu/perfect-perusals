@@ -3,9 +3,9 @@ class User < ActiveRecord::Base
   
   before_save :fill_name
   
-  searchable do 
-    text :name, :email
-  end
+  # searchable do 
+  #   text :name, :email
+  # end
   # Remember to reindex after adding new fields and user models
     
   has_many :authorships, 

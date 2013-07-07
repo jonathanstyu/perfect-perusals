@@ -18,9 +18,9 @@ class Book < ActiveRecord::Base
   validates :isbn, 
     :uniqueness => true 
 
-  searchable do 
-    text :title, :isbn
-  end
+  # searchable do 
+  #   text :title, :isbn
+  # end
   
   has_attached_file :cover_photo, 
     s3_host_name: "s3-us-west-1.amazonaws.com"
