@@ -14,16 +14,17 @@
 		</tr>
 		
 	<% @book_results.each do |result| %>
+		<% book = result.searchable %>
 		<tr>
-			<td><img src='<%= result.cover_image.length == 0 ? 
-					result.cover_photo.url : 
-					result.cover_image %>' 
+			<td><img src='<%= book.cover_image.length == 0 ? 
+					book.cover_photo.url : 
+					book.cover_image %>' 
 				style='height: 64px'></td>
 			<td>
-				<a href="<%= book_path(result) %>"><%= result.title %></a>
+				<a href="<%= book_path(book) %>"><%= book.title %></a>
 			</td>
-			<td><%= result.author_names.join(", ") %></td>
-			<td><%= result.avg_rating %></td>
+			<td><%= book.author_names.join(", ") %></td>
+			<td><%= book.avg_rating %></td>
 		</tr>
 	<%end%>
 	</table>	
@@ -38,14 +39,15 @@
 		</tr>
 	
 	<% @people_results.each do |result| %>
+		<% user = result.searchable %>
 		<tr>
-			<td><%= result.email %></td>
+			<td><%= user.email %></td>
 			<td>
-				<a href="<%= user_path(result) %>">
-					<%= result.name %>
+				<a href="<%= user_path(user) %>">
+					<%= user.name %>
 				</a>
 			</td>
-			<td><%= result.email.nil? ? "YES" : "NO" %></td>
+			<td><%= user.email.nil? ? "YES" : "NO" %></td>
 		</tr>
 	<%end%>
 	</table>	

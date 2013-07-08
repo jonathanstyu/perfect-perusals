@@ -3,10 +3,8 @@ class User < ActiveRecord::Base
   
   before_save :fill_name
   
-  # searchable do 
-  #   text :name, :email
-  # end
-  # Remember to reindex after adding new fields and user models
+  include PgSearch
+  multisearchable against: :name
     
   has_many :authorships, 
     :foreign_key => :author_id

@@ -14,17 +14,11 @@ class RootController < ApplicationController
     render :my_books
   end
   
-  def search
-    # @book_search = Book.search do 
-    #   fulltext params[:title]
-    # end
-    # 
-    # @people_search = User.search do 
-    #   fulltext params[:title]
-    # end
-    # 
-    # @book_results = @book_search.results
-    # @people_results = @people_search.results
+  def search    
+    @book_results = PgSearch.multisearch(params[:title])
+      .where(searchable_type: "Book")
+    @people_results = PgSearch.multisearch(params[:title])
+      .where(searchable_type: "User")
     
     render :search_results
   end

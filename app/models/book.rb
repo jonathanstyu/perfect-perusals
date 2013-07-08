@@ -1,5 +1,8 @@
 class Book < ActiveRecord::Base
-  attr_accessible :title, :synopsis, :cover_image, :isbn, :cover_photo, :authors_attributes
+  attr_accessible :title, :synopsis, :cover_image, :isbn, :cover_photo, :authors_attributes, :cover_photo_file_name, :cover_photo_content_type, :cover_photo_file_size, :cover_photo_updated_at
+  
+  include PgSearch 
+  multisearchable :against => :title
   
   has_many :authorships, 
     :foreign_key => :book_id
@@ -17,10 +20,6 @@ class Book < ActiveRecord::Base
 
   validates :isbn, 
     :uniqueness => true 
-
-  # searchable do 
-  #   text :title, :isbn
-  # end
   
   has_attached_file :cover_photo, 
     s3_host_name: "s3-us-west-1.amazonaws.com"
@@ -38,7 +37,7 @@ class Book < ActiveRecord::Base
   end
     
   def cover
-    if self.cover_image.length == 0 && self.cover_photo
+    if self.cover_photo
       self.cover_photo.url
     else
       self.cover_image
