@@ -16,9 +16,7 @@
 	<% @book_results.each do |result| %>
 		<% book = result.searchable %>
 		<tr>
-			<td><img src='<%= book.cover_image.length == 0 ? 
-					book.cover_photo.url : 
-					book.cover_image %>' 
+			<td><img src='<%= book.cover %>' 
 				style='height: 64px'></td>
 			<td>
 				<a href="<%= book_path(book) %>"><%= book.title %></a>
