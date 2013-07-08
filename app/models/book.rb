@@ -37,11 +37,11 @@ class Book < ActiveRecord::Base
   end
     
   def cover
-    if self.cover_photo
-      self.cover_photo.url
-    else
+    if self.cover_image
       self.cover_image
-    end
+    else
+      self.cover_photo.url
+    end    
   end
   
   def as_json(options={})
