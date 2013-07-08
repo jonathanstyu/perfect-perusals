@@ -37,10 +37,10 @@ class Book < ActiveRecord::Base
   end
     
   def cover
-    if self.cover_image
-      self.cover_image
-    else
+    if self.cover_image && self.cover_image.empty?
       self.cover_photo.url
+    else
+      self.cover_image
     end    
   end
   
