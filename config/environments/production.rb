@@ -64,4 +64,13 @@ Readingapp::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+  config.paperclip_defaults = {
+    :storage => :s3, 
+    :s3_credentials => {
+      :bucket => 'reading-app-book-covers', 
+      :access_key_id => Figaro.env.AWS_ACCESS_KEY, 
+      :secret_access_key => Figaro.env.SECRET_ACCESS_KEY
+    }
+  }
+  
 end
