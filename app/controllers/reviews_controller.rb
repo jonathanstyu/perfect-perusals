@@ -25,4 +25,19 @@ class ReviewsController < ApplicationController
     render :show
   end
   
+  def edit
+    @review = @current_user.reviews.includes(:book).find(params[:id])
+    render :edit
+  end
+  
+  def update
+    @review = @current_user.reviews.includes(:book).find(params[:id])
+    if @review.update_attributes(params[:review])
+      redirect_to book_path(@review.book)
+    else
+      flash[:error] = "Seems like an error was found. #{@review.errors}"
+      redirect_to :back
+    end
+  end
+  
 end

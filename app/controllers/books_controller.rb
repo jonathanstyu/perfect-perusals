@@ -3,6 +3,7 @@ class BooksController < ApplicationController
     
   def show
     @book = Book.includes(:authors, :reviews).find(params[:id])
+    @review = @book.reviews.where(reviewer_id: @current_user.id)
     render :show
   end
   

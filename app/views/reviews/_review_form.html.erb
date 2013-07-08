@@ -8,17 +8,15 @@
 		name="_method" value="<%= method %>" id="_method">
 	
 	<label for="Title">Title</label>
-	<input type="text" name="review[title]" value="" id="Title">
+	<input type="text" name="review[title]" value="<%= review.title%>" id="Title">
 	<label for="body">Body</label>
-	<textarea name="review[body]" rows="2" cols="20" id='body'></textarea>
+	<textarea name="review[body]" rows="2" cols="20" id='body'><%= review.body%></textarea>
 	
 	<label for='review[stars]'>Stars</label>
 	<select name="review[stars]" id="review[stars]">
-		<option value="1">1</option>
-		<option value="2">2</option>
-		<option value="3">3</option>
-		<option value="4">4</option>
-		<option value="5">5</option>
+		<% 5.times do |x| %>
+			<option value="<%= x+1 %>" <%= x+1 == review.stars ? 'selected' : "" %>><%= x+1 %></option>
+		<%end%>
 	</select>
 	<br>
 	<input type="submit" name="some_name" value="submit review" id="some_name" class='btn btn-small btn-primary'>	

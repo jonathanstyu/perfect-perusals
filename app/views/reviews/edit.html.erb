@@ -1,0 +1,24 @@
+<div class="media">
+	<a href="#" class='pull-left'>
+		<img src='<%= @review.book.cover_image %>' class='media-object' style='height:256px'>
+	</a>
+	<div class="media-body">
+		<h3 class='media-heading'>
+			Edit Review For: <a href="<%= book_path(@review.book)%>">
+				<%= @review.book.title %>
+			</a>
+		</h3>
+		<p>
+			<%= @review.book.synopsis[0..500] + "..."%>
+		</p>
+	</div><!-- .media-body -->
+</div><!-- .media -->
+<hr />
+<div class="review">
+	<h4>Your Review</h4>
+	<%= render partial: "reviews/review_form", 
+		locals: {review: @review, 
+			method: "put", 
+			path: review_path(@review)}%>
+	
+</div><!-- .review -->

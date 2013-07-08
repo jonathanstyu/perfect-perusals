@@ -37,13 +37,11 @@
 	<div class="span4">
 		<% if @current_user.nil? %>
 		<%= link_to "Login or Signup to Review", login_path %>
-		<%else%>
-		<% review = @book.reviews.where(reviewer_id: @current_user.id) %>
-		<%end%>
-		<% if review && review.empty? %>
+		<% elsif @review.empty? %>
 		<h5>Review this book!</h5>
 		<%= render partial: "reviews/review_form", 
 			locals: {book: @book, 
+				review: Review.new,
 				method: "post", 
 				path: book_reviews_path(@book)}%>
 		<%end%>
@@ -52,7 +50,9 @@
 	<div class="span6">
 		<h4>Reviews</h4>
 		<hr />
-		<%= render @book.reviews %>		
+		<% @book.reviews.each do |review| %>
+		<%= render partial: "reviews/review_home", locals: {review: review, user: @current_user}%>
+		<%end%>
 		<div id='reviews'>
 		</div><!-- .span10 -->
 	</div>
@@ -60,16 +60,18 @@
 </div><!-- .span10 -->
 
 <script type="text/template" id='submitted_comment'>
-<div>
-<b>You wrote: <%%= review.title %></b>
-<p>
-	Stars: <%%= review.stars %>	<br>
-	<%%= review.body %>
-</p>
-<p>
-	<a href="/reviews/<%%= review.id %>">Comment</a>
-</p>	
-</div><!-- . -->
+
+<div class="media">
+	<div class="media-body">
+		<h4 class='media-heading'>
+			You gave the book <a href='/books/<%%= review.book.id %>'><%%= review.book.title %></a> <%%= review.stars %> stars and said about it: 
+		</h4>
+		<p><i>
+			<a href="reviews/<%%= review.id %>"><%%= review.body %></a>
+		</i></p>
+	</div><!-- .media-body -->
+</div><!-- .media -->	
+
 </script>
 
 <script type="text/javascript" charset="utf-8">
