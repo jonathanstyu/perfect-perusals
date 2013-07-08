@@ -40,9 +40,13 @@ Readingapp.Routers.Recommendations = Backbone.Router.extend({
 			method: "get", 
 			success: function (data) {
 				var friendRecs = parseReviews(data); 
-				that.$maincontent.html(JST['recommendations/friend_rec']({
-					friendRec: friendRecs
-				})); 
+				if (friendRecs.length == 0) {
+					that.$maincontent.html(JST['recommendations/empty_rec']({})); 					
+				} else {
+					that.$maincontent.html(JST['recommendations/friend_rec']({
+						friendRec: friendRecs
+					})); 					
+				}
 			}
 		}); 
 	}

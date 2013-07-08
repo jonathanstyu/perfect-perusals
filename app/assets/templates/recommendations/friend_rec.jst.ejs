@@ -1,4 +1,4 @@
-<h3>Some Great Recommendations</h3>
+<h3>Some Great Recommendations from <%= friendRec[0].review.reviewer.name %></h3>
 <div class="carousel slide" id='recCarousel'>
 	<ol class='carousel-indicators'>
 		<% for (var i = 0; i < friendRec.length; i++) { %>
@@ -26,7 +26,6 @@
 						<%= review.body.substring(0, 150) %>...
 					</p>
 					<p style='text-align:center;'>
-						<a href="#" class='btn btn-mini btn-danger' id=''>Want to Read</a>
 					</p>
 				</div><!-- .carousel-caption -->
 			</div>
