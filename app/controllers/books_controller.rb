@@ -14,9 +14,10 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(params[:book])
     if @book.save 
-      redirect_to root_path
+      redirect_to book_path(@book)
     else
-      render json: @book.errors
+      flash[:error] = "There has been some errors saving this book: #{@book.errors}"
+      render :new
     end
   end
   

@@ -19,7 +19,7 @@ class Book < ActiveRecord::Base
     through: :taggings
 
   validates :isbn, 
-    :uniqueness => true 
+    :uniqueness => {scope: :title}
   
   has_attached_file :cover_photo, 
     s3_host_name: "s3-us-west-1.amazonaws.com"
