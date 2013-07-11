@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/rumblelabs/asset_sync.git
+  revision: fefd9ddfa1b609eb39f6003d91dc52acf405a3e4
+  specs:
+    asset_sync (0.5.4)
+      activemodel
+      fog
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -64,11 +72,23 @@ GEM
     eco-source (1.1.0.rc.1)
     ejs (1.1.1)
     erubis (2.7.0)
+    excon (0.6.6)
     execjs (1.4.0)
       multi_json (~> 1.0)
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
+    fog (0.9.0)
+      builder
+      excon (~> 0.6.1)
+      formatador (>= 0.1.3)
+      json
+      mime-types
+      net-scp (>= 1.0.4)
+      net-ssh (>= 2.1.4)
+      nokogiri (>= 1.4.4)
+      ruby-hmac
+    formatador (0.2.4)
     hike (1.2.3)
     i18n (0.6.1)
     journey (1.0.4)
@@ -82,6 +102,9 @@ GEM
     mime-types (1.23)
     mini_portile (0.5.0)
     multi_json (1.7.7)
+    net-scp (1.1.2)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.6.8)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     oj (2.1.3)
@@ -124,6 +147,7 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    ruby-hmac (0.4.0)
     sass (3.2.9)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -149,6 +173,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  asset_sync!
   aws-sdk
   backbone-on-rails
   better_errors
