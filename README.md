@@ -1,5 +1,7 @@
 ##PerfectPerusals 
 
+You can see PerfectPerusals hosted on Heroku at **perfect-perusals.herokuapp.com**
+
 PerfectPerusals ("PP") is a clone of GoodReads built on Ruby on Rails and a little bit of Backbone. In this ReadME, I thought that I would walk through a bit of the site, its features and some of the thoughts and challenges that I came across in creating it. 
 
 The goal with PP is to build a number of features that would mimick that of GoodReads' core tagging and book organization capabilities but it also uses a number of gems and technologies to make the book browsing experience that much richer. 
